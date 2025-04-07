@@ -17,38 +17,26 @@ const HeroSection = () => {
       </div>
       
       {/* Hero Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-48 lg:py-56 text-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 lg:py-48 text-center">
+        <div className="mx-auto w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 shadow-lg">
+          <h1 className="text-3xl font-bold text-blue-600">BINKS</h1>
+        </div>
         <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-          <span className="block">Discover the world through</span>
-          <span className="block text-blue-400">beautiful imagery</span>
+          <span className="block">The Smart Dustbin</span>
+          <span className="block text-blue-400">That Rewards You</span>
         </h1>
         <p className="mt-6 max-w-lg mx-auto text-xl text-gray-300">
-          Explore our curated collection of high-quality photographs for inspiration and creative projects.
+          Meet BINKS – the smart dustbin that rewards you for responsible waste disposal! 
+          Our ML-powered system weighs, identifies, and sorts trash while you earn rewards 
+          based on our tokenomics. Turn waste into value and join the recycling revolution today!
         </p>
-        <div className="mt-10 max-w-xl mx-auto">
-          <div className="flex items-center bg-white rounded-full shadow-lg overflow-hidden p-1">
-            <Search className="h-5 w-5 text-gray-400 ml-3 flex-shrink-0" />
-            <input
-              type="text"
-              placeholder="Search for photos, collections, or themes..."
-              className="w-full px-4 py-2 focus:outline-none text-gray-800 placeholder-gray-400"
-            />
-            <Button className="flex-shrink-0 rounded-full">
-              Search
-            </Button>
-          </div>
-          <div className="mt-4 text-white text-sm">
-            <span>Popular: </span>
-            {["Workspace", "Technology", "Lifestyle", "Nature", "Design"].map((tag) => (
-              <a 
-                key={tag} 
-                href="#" 
-                className="inline-block mx-1 hover:text-blue-400 transition"
-              >
-                {tag}
-              </a>
-            ))}
-          </div>
+        <div className="mt-10 flex justify-center gap-4">
+          <Button className="text-lg px-8 py-6" size="lg">
+            Learn More
+          </Button>
+          <Button className="text-lg px-8 py-6" variant="outline" size="lg">
+            Contact Us
+          </Button>
         </div>
       </div>
     </div>
