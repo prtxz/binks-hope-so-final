@@ -65,7 +65,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Video Section */}
+      {/* Video Section - Renamed to "See How BINKS Works" */}
       <section id="video" className="py-16 bg-[#242424]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -86,118 +86,8 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Gamification Section */}
-      <section id="gamification" className="py-16 bg-[#1e1e1e]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">How BINKS Gamifies Waste Management</h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Turn waste disposal into a rewarding experience with our gamified ecosystem that incentivizes sustainability.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-[#242424] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
-              <div className="flex items-center mb-6">
-                <Trophy className="h-10 w-10 text-[#4CAF50] mr-4" />
-                <h3 className="text-2xl font-bold text-white">Eco Score System</h3>
-              </div>
-              <p className="text-gray-300 mb-6">
-                Every time you use BINKS, you earn eco points based on the type and quantity of waste. 
-                Your eco score determines your rank in the community and unlocks exclusive rewards.
-              </p>
-              <div className="space-y-4">
-                <div className="bg-[#1a1a1a] p-4 rounded-lg">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Plastic Recycling</span>
-                    <span className="text-[#4CAF50] font-semibold">+10 points per kg</span>
-                  </div>
-                  <div className="w-full bg-[#333] rounded-full h-2">
-                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '80%' }}></div>
-                  </div>
-                </div>
-                <div className="bg-[#1a1a1a] p-4 rounded-lg">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Organic Waste</span>
-                    <span className="text-[#4CAF50] font-semibold">+5 points per kg</span>
-                  </div>
-                  <div className="w-full bg-[#333] rounded-full h-2">
-                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '60%' }}></div>
-                  </div>
-                </div>
-                <div className="bg-[#1a1a1a] p-4 rounded-lg">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">E-Waste</span>
-                    <span className="text-[#4CAF50] font-semibold">+25 points per kg</span>
-                  </div>
-                  <div className="w-full bg-[#333] rounded-full h-2">
-                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '40%' }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-[#242424] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
-              <div className="flex items-center mb-6">
-                <Users className="h-10 w-10 text-[#4CAF50] mr-4" />
-                <h3 className="text-2xl font-bold text-white">Community Leaderboard</h3>
-              </div>
-              <p className="text-gray-300 mb-6">
-                Compete with friends and neighbors on our community leaderboard. Rise through the 
-                ranks from "Eco Novice" to "Sustainability Champion" as you consistently recycle and reduce waste.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center bg-[#1a1a1a] p-3 rounded-lg border-l-4 border-[#FFD700]">
-                  <Award className="h-6 w-6 text-[#FFD700] mr-3" />
-                  <div className="flex-1">
-                    <div className="flex justify-between">
-                      <span className="text-white font-medium">EcoWarrior92</span>
-                      <span className="text-[#4CAF50]">10,245 pts</span>
-                    </div>
-                    <div className="text-xs text-gray-400">Sustainability Champion</div>
-                  </div>
-                </div>
-                <div className="flex items-center bg-[#1a1a1a] p-3 rounded-lg border-l-4 border-[#C0C0C0]">
-                  <Award className="h-6 w-6 text-[#C0C0C0] mr-3" />
-                  <div className="flex-1">
-                    <div className="flex justify-between">
-                      <span className="text-white font-medium">GreenThumb</span>
-                      <span className="text-[#4CAF50]">8,954 pts</span>
-                    </div>
-                    <div className="text-xs text-gray-400">Eco Master</div>
-                  </div>
-                </div>
-                <div className="flex items-center bg-[#1a1a1a] p-3 rounded-lg border-l-4 border-[#CD7F32]">
-                  <Award className="h-6 w-6 text-[#CD7F32] mr-3" />
-                  <div className="flex-1">
-                    <div className="flex justify-between">
-                      <span className="text-white font-medium">RecyclePro</span>
-                      <span className="text-[#4CAF50]">7,832 pts</span>
-                    </div>
-                    <div className="text-xs text-gray-400">Eco Expert</div>
-                  </div>
-                </div>
-                <div className="flex items-center bg-[#1a1a1a] p-3 rounded-lg">
-                  <Star className="h-6 w-6 text-[#4CAF50] mr-3" />
-                  <div className="flex-1">
-                    <div className="flex justify-between">
-                      <span className="text-white font-medium">You</span>
-                      <span className="text-[#4CAF50]">5,621 pts</span>
-                    </div>
-                    <div className="text-xs text-gray-400">Eco Enthusiast</div>
-                  </div>
-                </div>
-              </div>
-              <Button className="mt-6 w-full bg-[#4CAF50] hover:bg-[#3e8e41] text-white">
-                View Full Leaderboard
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Tokenomics Section */}
-      <section id="tokenomics" className="py-16 bg-[#242424]">
+      {/* Tokenomics Section - Moved up before Gamification */}
+      <section id="tokenomics" className="py-16 bg-[#1e1e1e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">Tokenomics</h2>
@@ -268,7 +158,117 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Franchise Section */}
+      {/* Gamification Section */}
+      <section id="gamification" className="py-16 bg-[#242424]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">How BINKS Gamifies Waste Management</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Turn waste disposal into a rewarding experience with our gamified ecosystem that incentivizes sustainability.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="bg-[#1a1a1a] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
+              <div className="flex items-center mb-6">
+                <Trophy className="h-10 w-10 text-[#4CAF50] mr-4" />
+                <h3 className="text-2xl font-bold text-white">Eco Score System</h3>
+              </div>
+              <p className="text-gray-300 mb-6">
+                Every time you use BINKS, you earn eco points based on the type and quantity of waste. 
+                Your eco score determines your rank in the community and unlocks exclusive rewards.
+              </p>
+              <div className="space-y-4">
+                <div className="bg-[#242424] p-4 rounded-lg">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-300">Plastic Recycling</span>
+                    <span className="text-[#4CAF50] font-semibold">+10 points per kg</span>
+                  </div>
+                  <div className="w-full bg-[#333] rounded-full h-2">
+                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '80%' }}></div>
+                  </div>
+                </div>
+                <div className="bg-[#242424] p-4 rounded-lg">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-300">Organic Waste</span>
+                    <span className="text-[#4CAF50] font-semibold">+5 points per kg</span>
+                  </div>
+                  <div className="w-full bg-[#333] rounded-full h-2">
+                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '60%' }}></div>
+                  </div>
+                </div>
+                <div className="bg-[#242424] p-4 rounded-lg">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-300">E-Waste</span>
+                    <span className="text-[#4CAF50] font-semibold">+25 points per kg</span>
+                  </div>
+                  <div className="w-full bg-[#333] rounded-full h-2">
+                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '40%' }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-[#1a1a1a] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
+              <div className="flex items-center mb-6">
+                <Users className="h-10 w-10 text-[#4CAF50] mr-4" />
+                <h3 className="text-2xl font-bold text-white">Community Leaderboard</h3>
+              </div>
+              <p className="text-gray-300 mb-6">
+                Compete with friends and neighbors on our community leaderboard. Rise through the 
+                ranks from "Eco Novice" to "Sustainability Champion" as you consistently recycle and reduce waste.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center bg-[#242424] p-3 rounded-lg border-l-4 border-[#FFD700]">
+                  <Award className="h-6 w-6 text-[#FFD700] mr-3" />
+                  <div className="flex-1">
+                    <div className="flex justify-between">
+                      <span className="text-white font-medium">EcoWarrior92</span>
+                      <span className="text-[#4CAF50]">10,245 pts</span>
+                    </div>
+                    <div className="text-xs text-gray-400">Sustainability Champion</div>
+                  </div>
+                </div>
+                <div className="flex items-center bg-[#242424] p-3 rounded-lg border-l-4 border-[#C0C0C0]">
+                  <Award className="h-6 w-6 text-[#C0C0C0] mr-3" />
+                  <div className="flex-1">
+                    <div className="flex justify-between">
+                      <span className="text-white font-medium">GreenThumb</span>
+                      <span className="text-[#4CAF50]">8,954 pts</span>
+                    </div>
+                    <div className="text-xs text-gray-400">Eco Master</div>
+                  </div>
+                </div>
+                <div className="flex items-center bg-[#242424] p-3 rounded-lg border-l-4 border-[#CD7F32]">
+                  <Award className="h-6 w-6 text-[#CD7F32] mr-3" />
+                  <div className="flex-1">
+                    <div className="flex justify-between">
+                      <span className="text-white font-medium">RecyclePro</span>
+                      <span className="text-[#4CAF50]">7,832 pts</span>
+                    </div>
+                    <div className="text-xs text-gray-400">Eco Expert</div>
+                  </div>
+                </div>
+                <div className="flex items-center bg-[#242424] p-3 rounded-lg">
+                  <Star className="h-6 w-6 text-[#4CAF50] mr-3" />
+                  <div className="flex-1">
+                    <div className="flex justify-between">
+                      <span className="text-white font-medium">EcoNewbie</span>
+                      <span className="text-[#4CAF50]">5,621 pts</span>
+                    </div>
+                    <div className="text-xs text-gray-400">Eco Enthusiast</div>
+                  </div>
+                </div>
+              </div>
+              <Button className="mt-6 w-full bg-[#4CAF50] hover:bg-[#3e8e41] text-white">
+                View Full Leaderboard
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Franchise Section - Moved after Gamification */}
       <section id="franchise" className="py-16 bg-[#1e1e1e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -278,7 +278,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="bg-[#242424] rounded-xl shadow-xl overflow-hidden border border-[#4CAF50]/20">
+          <div className="bg-[#1a1a1a] rounded-xl shadow-xl overflow-hidden border border-[#4CAF50]/20">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-10">
                 <h3 className="text-2xl font-bold text-white mb-6">Why Franchise With BINKS?</h3>
@@ -393,26 +393,26 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-[#242424] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
+            <div className="bg-[#1a1a1a] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
               <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                    <input type="text" id="name" className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white" />
+                    <input type="text" id="name" className="w-full px-4 py-2 bg-[#242424] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white" />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                    <input type="email" id="email" className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white" />
+                    <input type="email" id="email" className="w-full px-4 py-2 bg-[#242424] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white" />
                   </div>
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-1">Subject</label>
-                  <input type="text" id="subject" className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white" />
+                  <input type="text" id="subject" className="w-full px-4 py-2 bg-[#242424] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white" />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label>
-                  <textarea id="message" rows={4} className="w-full px-4 py-2 bg-[#1a1a1a] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white"></textarea>
+                  <textarea id="message" rows={4} className="w-full px-4 py-2 bg-[#242424] border border-[#4CAF50]/20 rounded-md focus:ring-[#4CAF50] focus:border-[#4CAF50] text-white"></textarea>
                 </div>
                 <Button type="submit" className="w-full bg-[#4CAF50] hover:bg-[#3e8e41] text-white">
                   Send Message
@@ -441,7 +441,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="bg-[#242424] p-8 rounded-xl border border-[#4CAF50]/20">
+              <div className="bg-[#1a1a1a] p-8 rounded-xl border border-[#4CAF50]/20">
                 <h3 className="text-2xl font-bold text-white mb-6">Connect With Us</h3>
                 <p className="text-gray-300 mb-4">
                   Follow us on social media for the latest updates, waste management tips, and success stories from our BINKS community.
@@ -488,9 +488,9 @@ const Index = () => {
               <ul className="space-y-2">
                 <li><a href="#hero" onClick={(e) => { e.preventDefault(); document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Home</a></li>
                 <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Services</a></li>
-                <li><a href="#franchise" onClick={(e) => { e.preventDefault(); document.getElementById('franchise')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Franchise</a></li>
                 <li><a href="#tokenomics" onClick={(e) => { e.preventDefault(); document.getElementById('tokenomics')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Tokenomics</a></li>
                 <li><a href="#gamification" onClick={(e) => { e.preventDefault(); document.getElementById('gamification')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Gamification</a></li>
+                <li><a href="#franchise" onClick={(e) => { e.preventDefault(); document.getElementById('franchise')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Franchise</a></li>
                 <li><a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">About Us</a></li>
                 <li><a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Contact Us</a></li>
               </ul>

@@ -37,13 +37,6 @@ const Navbar = () => {
                 Services
               </a>
               <a 
-                href="#franchise" 
-                onClick={(e) => { e.preventDefault(); handleScrollToSection('franchise'); }} 
-                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
-              >
-                Franchise
-              </a>
-              <a 
                 href="#tokenomics" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('tokenomics'); }} 
                 className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
@@ -56,6 +49,13 @@ const Navbar = () => {
                 className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
                 Gamification
+              </a>
+              <a 
+                href="#franchise" 
+                onClick={(e) => { e.preventDefault(); handleScrollToSection('franchise'); }} 
+                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
+              >
+                Franchise
               </a>
               <a 
                 href="#about" 
@@ -109,13 +109,6 @@ const Navbar = () => {
               Services
             </a>
             <a 
-              href="#franchise" 
-              onClick={(e) => { e.preventDefault(); handleScrollToSection('franchise'); }} 
-              className="text-gray-300 border-l-4 border-transparent hover:border-[#4CAF50] hover:text-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
-            >
-              Franchise
-            </a>
-            <a 
               href="#tokenomics" 
               onClick={(e) => { e.preventDefault(); handleScrollToSection('tokenomics'); }} 
               className="text-gray-300 border-l-4 border-transparent hover:border-[#4CAF50] hover:text-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
@@ -128,6 +121,13 @@ const Navbar = () => {
               className="text-gray-300 border-l-4 border-transparent hover:border-[#4CAF50] hover:text-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
             >
               Gamification
+            </a>
+            <a 
+              href="#franchise" 
+              onClick={(e) => { e.preventDefault(); handleScrollToSection('franchise'); }} 
+              className="text-gray-300 border-l-4 border-transparent hover:border-[#4CAF50] hover:text-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
+            >
+              Franchise
             </a>
             <a 
               href="#about" 

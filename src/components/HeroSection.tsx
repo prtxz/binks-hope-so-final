@@ -3,18 +3,23 @@ import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
+  const [initialAnimation, setInitialAnimation] = useState(true);
   const [logoAnimationComplete, setLogoAnimationComplete] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    // Trigger the logo animation immediately
+    // Initial pop-up animation
     setTimeout(() => {
-      setLogoAnimationComplete(true);
-      // Wait for logo animation to complete before showing content
+      setInitialAnimation(false);
+      // Trigger the logo animation after the pop-up
       setTimeout(() => {
-        setContentVisible(true);
-      }, 500);
-    }, 100);
+        setLogoAnimationComplete(true);
+        // Wait for logo animation to complete before showing content
+        setTimeout(() => {
+          setContentVisible(true);
+        }, 500);
+      }, 800);
+    }, 1000); // Show the pop-up for 1 second
   }, []);
 
   const handleScrollToSection = (id: string) => {
@@ -26,6 +31,15 @@ const HeroSection = () => {
 
   return (
     <div id="hero" className="relative bg-[#242424] py-20">
+      {/* Initial Pop-up Animation */}
+      {initialAnimation && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-[#242424]">
+          <div className="w-40 h-40 bg-[#242424] border-2 border-[#4CAF50] rounded-full flex items-center justify-center shadow-lg animate-pop-in">
+            <h1 className="text-4xl font-bold text-[#4CAF50]">BINKS</h1>
+          </div>
+        </div>
+      )}
+
       {/* Hero Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 lg:py-48 text-center">
         <div 
