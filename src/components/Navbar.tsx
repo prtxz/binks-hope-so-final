@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#121212] shadow-sm sticky top-0 z-50">
+    <nav className="bg-[#1a1a1a] shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -52,7 +52,7 @@ const Navbar = () => {
 
       {isMenuOpen && (
         <div className="sm:hidden">
-          <div className="pt-2 pb-3 space-y-1 bg-[#121212]">
+          <div className="pt-2 pb-3 space-y-1 bg-[#1a1a1a]">
             <a href="#" className="text-white border-l-4 border-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium">
               Home
             </a>

@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <div className="relative bg-[#121212] py-20">
+    <div className="relative bg-[#1a1a1a] py-20">
       {/* Hero Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 lg:py-48 text-center">
-        <div className="mx-auto w-32 h-32 bg-[#121212] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mb-8 shadow-lg">
+        <div className="mx-auto w-32 h-32 bg-[#1a1a1a] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mb-8 shadow-lg">
           <h1 className="text-3xl font-bold text-[#4CAF50]">BINKS</h1>
         </div>
         <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
@@ -21,13 +21,16 @@ const HeroSection = () => {
         </p>
         <div className="mt-10 flex justify-center gap-4">
           <Button 
-            className="text-lg px-8 py-6 bg-[#4CAF50] hover:bg-[#3e8e41] transition-colors duration-300 text-white" 
+            className="text-lg px-8 py-6 bg-[#4CAF50] hover:bg-[#3e8e41] transition-colors duration-300 text-white w-48" 
             size="lg"
+            onClick={() => {
+              document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
             How It Works
           </Button>
           <Button 
-            className="text-lg px-8 py-6 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-colors duration-300" 
+            className="text-lg px-8 py-6 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-colors duration-300 w-48" 
             variant="outline" 
             size="lg"
           >
