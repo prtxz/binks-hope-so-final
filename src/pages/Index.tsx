@@ -486,12 +486,13 @@ const Index = () => {
             <div>
               <h3 className="text-xl font-bold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-[#4CAF50] transition">Home</a></li>
-                <li><a href="#services" className="text-gray-400 hover:text-[#4CAF50] transition">Services</a></li>
-                <li><a href="#tokenomics" className="text-gray-400 hover:text-[#4CAF50] transition">Tokenomics</a></li>
-                <li><a href="#franchise" className="text-gray-400 hover:text-[#4CAF50] transition">Franchise</a></li>
-                <li><a href="#about" className="text-gray-400 hover:text-[#4CAF50] transition">About</a></li>
-                <li><a href="#contact" className="text-gray-400 hover:text-[#4CAF50] transition">Contact</a></li>
+                <li><a href="#hero" onClick={(e) => { e.preventDefault(); document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Home</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Services</a></li>
+                <li><a href="#franchise" onClick={(e) => { e.preventDefault(); document.getElementById('franchise')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Franchise</a></li>
+                <li><a href="#tokenomics" onClick={(e) => { e.preventDefault(); document.getElementById('tokenomics')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Tokenomics</a></li>
+                <li><a href="#gamification" onClick={(e) => { e.preventDefault(); document.getElementById('gamification')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Gamification</a></li>
+                <li><a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">About Us</a></li>
+                <li><a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Contact Us</a></li>
               </ul>
             </div>
             <div>
