@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 
 const HeroSection = () => {
   const [initialAnimation, setInitialAnimation] = useState(true);
@@ -88,6 +89,20 @@ const HeroSection = () => {
             </Button>
           </div>
         </div>
+      </div>
+
+      {/* Chatbot Button - Fixed at bottom right */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Button 
+          className="w-16 h-16 rounded-full bg-[#4CAF50] hover:bg-[#3e8e41] transition-all duration-300 shadow-lg flex items-center justify-center group"
+          onClick={() => {
+            // This will be implemented later when the chatbot page is created
+            console.log("Chatbot button clicked");
+          }}
+        >
+          <MessageCircle className="h-8 w-8 text-white group-hover:scale-110 transition-transform duration-300" />
+          <span className="sr-only">Open Chatbot</span>
+        </Button>
       </div>
     </div>
   );
