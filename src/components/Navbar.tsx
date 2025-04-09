@@ -1,9 +1,20 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [navbarVisible, setNavbarVisible] = useState(false);
+
+  useEffect(() => {
+    // The navbar visibility is controlled by the HeroSection component
+    // This just ensures the navbar appears after initial page load
+    const timer = setTimeout(() => {
+      setNavbarVisible(true);
+    }, 1500);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleScrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -14,7 +25,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#242424] shadow-sm sticky top-0 z-50">
+    <nav className={`bg-[#242424] shadow-sm sticky top-0 z-50 transition-all duration-700 ease-in-out transform ${
+      navbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
