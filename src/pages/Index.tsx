@@ -122,7 +122,7 @@ const Index = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Token Distribution</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">User Rewards</span>
+                  <span className="text-gray-300">Community</span>
                   <span className="font-semibold text-white">50%</span>
                 </div>
                 <div className="w-full bg-[#333] rounded-full h-2.5">
@@ -130,15 +130,15 @@ const Index = () => {
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Ecosystem Development</span>
-                  <span className="font-semibold text-white">30%</span>
+                  <span className="text-gray-300">Platform Treasury</span>
+                  <span className="font-semibold text-white">20%</span>
                 </div>
                 <div className="w-full bg-[#333] rounded-full h-2.5">
-                  <div className="bg-[#4CAF50] h-2.5 rounded-full" style={{ width: '30%' }}></div>
+                  <div className="bg-[#4CAF50] h-2.5 rounded-full" style={{ width: '20%' }}></div>
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Team & Advisors</span>
+                  <span className="text-gray-300">Corporate Partnerships</span>
                   <span className="font-semibold text-white">15%</span>
                 </div>
                 <div className="w-full bg-[#333] rounded-full h-2.5">
@@ -146,7 +146,15 @@ const Index = () => {
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Reserve</span>
+                  <span className="text-gray-300">Teams and Advisors</span>
+                  <span className="font-semibold text-white">10%</span>
+                </div>
+                <div className="w-full bg-[#333] rounded-full h-2.5">
+                  <div className="bg-[#4CAF50] h-2.5 rounded-full" style={{ width: '10%' }}></div>
+                </div>
+                
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300">Marketing and Partnerships</span>
                   <span className="font-semibold text-white">5%</span>
                 </div>
                 <div className="w-full bg-[#333] rounded-full h-2.5">
@@ -158,13 +166,13 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Gamification Section */}
+      {/* Incentives Section (Renamed from Gamification) */}
       <section id="gamification" className="py-16 bg-[#242424]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">How BINKS Gamifies Waste Management</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">How BINKS Incentivizes Waste Management</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Turn waste disposal into a rewarding experience with our gamified ecosystem that incentivizes sustainability.
+              Turn waste disposal into a rewarding experience with our incentivized ecosystem that encourages sustainability.
             </p>
           </div>
           
@@ -175,35 +183,20 @@ const Index = () => {
                 <h3 className="text-2xl font-bold text-white">Eco Score System</h3>
               </div>
               <p className="text-gray-300 mb-6">
-                Every time you use BINKS, you earn eco points based on the type and quantity of waste. 
+                Every time you use BINKS, you earn eco points based on the type of waste. 
                 Your eco score determines your rank in the community and unlocks exclusive rewards.
               </p>
               <div className="space-y-4">
                 <div className="bg-[#242424] p-4 rounded-lg">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Plastic Recycling</span>
-                    <span className="text-[#4CAF50] font-semibold">+10 points per kg</span>
-                  </div>
-                  <div className="w-full bg-[#333] rounded-full h-2">
-                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '80%' }}></div>
+                    <span className="text-gray-300">Recyclable Waste</span>
+                    <span className="text-[#4CAF50] font-semibold">Higher rewards</span>
                   </div>
                 </div>
                 <div className="bg-[#242424] p-4 rounded-lg">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Organic Waste</span>
-                    <span className="text-[#4CAF50] font-semibold">+5 points per kg</span>
-                  </div>
-                  <div className="w-full bg-[#333] rounded-full h-2">
-                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '60%' }}></div>
-                  </div>
-                </div>
-                <div className="bg-[#242424] p-4 rounded-lg">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">E-Waste</span>
-                    <span className="text-[#4CAF50] font-semibold">+25 points per kg</span>
-                  </div>
-                  <div className="w-full bg-[#333] rounded-full h-2">
-                    <div className="bg-[#4CAF50] h-2 rounded-full" style={{ width: '40%' }}></div>
+                    <span className="text-gray-300">Non-Recyclable Waste</span>
+                    <span className="text-[#4CAF50] font-semibold">Base rewards</span>
                   </div>
                 </div>
               </div>
@@ -327,7 +320,7 @@ const Index = () => {
                     </div>
                     <div className="bg-[#3e8e41] p-4 rounded-lg text-center">
                       <div className="text-3xl font-bold">15+</div>
-                      <div className="text-sm">Countries Worldwide</div>
+                      <div className="text-sm">Cities Nation Wide</div>
                     </div>
                   </div>
                 </div>
@@ -351,7 +344,7 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Our Story</h3>
               <p className="text-gray-300 mb-4">
-                BINKS was founded in 2022 by a team of environmental engineers and blockchain enthusiasts who saw the potential to transform waste management through technology and incentives.
+                BINKS was founded in 2025 by a team of environmental engineers and blockchain enthusiasts who saw the potential to transform waste management through technology and incentives.
               </p>
               <p className="text-gray-300 mb-4">
                 Our mission is to reduce waste pollution worldwide by making responsible disposal rewarding and convenient. We believe in the power of individual actions to create global impact.
@@ -367,7 +360,7 @@ const Index = () => {
               </div>
               <div className="bg-[#1a1a1a] p-6 rounded-lg text-center border border-[#4CAF50]/20">
                 <div className="text-3xl font-bold text-[#4CAF50] mb-2">15+</div>
-                <div className="text-gray-300">Cities Worldwide</div>
+                <div className="text-gray-300">Cities Nation Wide</div>
               </div>
               <div className="bg-[#1a1a1a] p-6 rounded-lg text-center border border-[#4CAF50]/20">
                 <div className="text-3xl font-bold text-[#4CAF50] mb-2">200k+</div>
@@ -435,7 +428,7 @@ const Index = () => {
                     <Building className="h-6 w-6 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium">Headquarters</p>
-                      <p>123 Eco Street, Green City, 10001</p>
+                      <p>Dayananda Sagar University, Bangalore</p>
                     </div>
                   </div>
                 </div>
@@ -489,7 +482,7 @@ const Index = () => {
                 <li><a href="#hero" onClick={(e) => { e.preventDefault(); document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Home</a></li>
                 <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Services</a></li>
                 <li><a href="#tokenomics" onClick={(e) => { e.preventDefault(); document.getElementById('tokenomics')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Tokenomics</a></li>
-                <li><a href="#gamification" onClick={(e) => { e.preventDefault(); document.getElementById('gamification')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Gamification</a></li>
+                <li><a href="#incentives" onClick={(e) => { e.preventDefault(); document.getElementById('gamification')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Incentives</a></li>
                 <li><a href="#franchise" onClick={(e) => { e.preventDefault(); document.getElementById('franchise')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Franchise</a></li>
                 <li><a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">About Us</a></li>
                 <li><a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-gray-400 hover:text-[#4CAF50] transition">Contact Us</a></li>

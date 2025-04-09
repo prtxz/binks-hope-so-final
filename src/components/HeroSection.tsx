@@ -72,8 +72,8 @@ const HeroSection = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Button 
-              className="text-lg px-6 py-5 bg-[#4CAF50] hover:bg-[#3e8e41] transition-colors duration-300 text-white w-44 h-auto" 
-              size="lg"
+              className="text-sm px-4 py-2 bg-[#4CAF50] hover:bg-[#3e8e41] transition-colors duration-300 text-white rounded-full shadow-md" 
+              size="sm"
               onClick={() => {
                 handleScrollToSection('video');
               }}
@@ -81,9 +81,9 @@ const HeroSection = () => {
               How It Works
             </Button>
             <Button 
-              className="text-lg px-6 py-5 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-colors duration-300 w-44 h-auto" 
+              className="text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-colors duration-300 rounded-full shadow-md" 
               variant="outline" 
-              size="lg"
+              size="sm"
             >
               Connect Wallet
             </Button>

@@ -57,11 +57,11 @@ const Navbar = () => {
                 Tokenomics
               </a>
               <a 
-                href="#gamification" 
+                href="#incentives" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('gamification'); }} 
                 className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
-                Gamification
+                Incentives
               </a>
               <a 
                 href="#franchise" 
@@ -129,11 +129,11 @@ const Navbar = () => {
               Tokenomics
             </a>
             <a 
-              href="#gamification" 
+              href="#incentives" 
               onClick={(e) => { e.preventDefault(); handleScrollToSection('gamification'); }} 
               className="text-gray-300 border-l-4 border-transparent hover:border-[#4CAF50] hover:text-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
             >
-              Gamification
+              Incentives
             </a>
             <a 
               href="#franchise" 
