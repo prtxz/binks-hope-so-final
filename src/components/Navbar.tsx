@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`bg-[#242424] shadow-sm sticky top-0 z-50 transition-all duration-700 ease-in-out transform ${
+    <nav className={`bg-[#2d2d2d] shadow-md sticky top-0 z-50 transition-all duration-700 ease-in-out transform ${
       navbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,42 +45,42 @@ const Navbar = () => {
               <a 
                 href="#services" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('services'); }} 
-                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
+                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-all duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
                 Services
               </a>
               <a 
                 href="#tokenomics" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('tokenomics'); }} 
-                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
+                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-all duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
                 Tokenomics
               </a>
               <a 
                 href="#incentives" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('gamification'); }} 
-                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
+                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-all duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
                 Incentives
               </a>
               <a 
                 href="#franchise" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('franchise'); }} 
-                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
+                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-all duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
                 Franchise
               </a>
               <a 
                 href="#about" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('about'); }} 
-                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
+                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-all duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
                 About Us
               </a>
               <a 
                 href="#contact" 
                 onClick={(e) => { e.preventDefault(); handleScrollToSection('contact'); }} 
-                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-colors duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
+                className="text-gray-300 border-b-2 border-transparent px-1 pt-1 text-sm font-medium transition-all duration-200 hover:text-[#4CAF50] hover:border-[#4CAF50]"
               >
                 Contact Us
               </a>
@@ -91,7 +91,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#4CAF50]"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-[#4CAF50]/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#4CAF50] transition-colors duration-200"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -105,12 +105,12 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="sm:hidden">
-          <div className="pt-2 pb-3 space-y-1 bg-[#242424]">
+        <div className="sm:hidden animate-slide-in-from-top">
+          <div className="pt-2 pb-3 space-y-1 bg-[#2d2d2d]">
             <a 
               href="#" 
               onClick={(e) => { e.preventDefault(); handleScrollToSection('hero'); }} 
-              className="text-white border-l-4 border-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium"
+              className="text-white border-l-4 border-[#4CAF50] block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
             >
               Home
             </a>

@@ -24,7 +24,7 @@ const HeroSection = () => {
         // Wait a short time before showing content sliding from bottom
         setTimeout(() => {
           setContentVisible(true);
-        }, 300);
+        }, 400);
       }, 300);
     }, 1000); // Show the pop-up for 1 second
   }, []);
@@ -37,11 +37,11 @@ const HeroSection = () => {
   };
 
   return (
-    <div id="hero" className="relative bg-[#2b2b2b] py-12">
+    <div id="hero" className="relative bg-[#323232] py-12">
       {/* Initial Pop-up Animation */}
       {initialAnimation && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-[#2b2b2b]">
-          <div className="w-40 h-40 bg-[#2b2b2b] border-2 border-[#4CAF50] rounded-full flex items-center justify-center shadow-lg animate-pop-in">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-[#323232]">
+          <div className="w-40 h-40 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center shadow-lg animate-pop-in">
             <h1 className="text-4xl font-bold text-[#4CAF50]">BINKS</h1>
           </div>
         </div>
@@ -51,8 +51,8 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 text-center">
         {/* This logo is now displayed immediately after the pop-up disappears */}
         <div 
-          className={`mx-auto w-32 h-32 bg-[#2b2b2b] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mb-6 shadow-lg transition-opacity duration-300 ${
-            initialAnimation ? 'opacity-0' : 'opacity-100'
+          className={`mx-auto w-32 h-32 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mb-6 shadow-lg transition-all duration-500 ${
+            logoAnimationComplete ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
           }`}
         >
           <h1 className="text-3xl font-bold text-[#4CAF50]">BINKS</h1>
@@ -72,7 +72,7 @@ const HeroSection = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Button 
-              className="text-sm px-4 py-2 bg-[#4CAF50] hover:bg-[#3e8e41] transition-colors duration-300 text-white rounded-full shadow-md" 
+              className="text-sm px-4 py-2 bg-[#4CAF50] hover:bg-[#3e8e41] transition-all duration-300 text-white rounded-full shadow-md hover:shadow-lg hover:shadow-[#4CAF50]/20 transform hover:-translate-y-1" 
               size="sm"
               onClick={() => {
                 handleScrollToSection('video');
@@ -81,7 +81,7 @@ const HeroSection = () => {
               How It Works
             </Button>
             <Button 
-              className="text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-colors duration-300 rounded-full shadow-md" 
+              className="text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-all duration-300 rounded-full shadow-md hover:shadow-lg hover:shadow-[#4CAF50]/20 transform hover:-translate-y-1" 
               variant="outline" 
               size="sm"
             >
@@ -94,7 +94,7 @@ const HeroSection = () => {
       {/* Chatbot Button - Fixed at bottom right */}
       <div className="fixed bottom-6 right-6 z-50">
         <Button 
-          className="w-16 h-16 rounded-full bg-[#4CAF50] hover:bg-[#3e8e41] transition-all duration-300 shadow-lg flex items-center justify-center group"
+          className="w-16 h-16 rounded-full bg-[#4CAF50] hover:bg-[#3e8e41] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#4CAF50]/30 flex items-center justify-center group transform hover:-translate-y-1"
           onClick={() => {
             // This will be implemented later when the chatbot page is created
             console.log("Chatbot button clicked");
