@@ -7,11 +7,11 @@ const Navbar = () => {
   const [navbarVisible, setNavbarVisible] = useState(false);
 
   useEffect(() => {
-    // The navbar visibility is controlled by the HeroSection component
-    // This just ensures the navbar appears after initial page load
+    // Delay the navbar appearance to happen after the logo animation
+    // This ensures a clean sequential animation flow
     const timer = setTimeout(() => {
       setNavbarVisible(true);
-    }, 1500);
+    }, 2600); // Adjusted timing to match HeroSection animations
     
     return () => clearTimeout(timer);
   }, []);
@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`bg-[#2d2d2d] shadow-md sticky top-0 z-50 transition-all duration-700 ease-in-out transform ${
+    <nav className={`fixed top-0 w-full bg-[#2d2d2d] shadow-md z-50 transition-all duration-700 ease-out transform ${
       navbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

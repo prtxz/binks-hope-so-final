@@ -115,6 +115,9 @@
     transform: scale(1.1) translateY(0);
     opacity: 1;
   }
+  85% {
+    transform: scale(0.95);
+  }
   100% {
     transform: scale(1);
     opacity: 1;
@@ -165,10 +168,51 @@
   }
 }
 
+/* New particle animations for logo */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(10px);
+  }
+  75% {
+    transform: translateY(10px) translateX(5px);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate-glow {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 20px 0px rgba(76, 175, 80, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(76, 175, 80, 0.5);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0 0 20px 0px rgba(76, 175, 80, 0.3);
+  }
+}
+
 /* Button hover effects */
 @keyframes subtle-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
   }
   70% {
     box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
@@ -179,7 +223,7 @@
 }
 
 .animate-pop-in {
-  animation: pop-in 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: pop-in 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .animate-fade-in {
@@ -198,6 +242,18 @@
   animation: scale-in 0.5s ease-out forwards;
 }
 
+.animate-particle {
+  animation: particle-float 4s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-rotate-glow {
+  animation: rotate-glow 10s linear infinite;
+}
+
 .btn-hover-effect:hover {
   animation: subtle-pulse 2s infinite;
 }
@@ -211,3 +267,37 @@
 .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
 .stagger-children > *:nth-child(7) { animation-delay: 0.7s; }
 .stagger-children > *:nth-child(8) { animation-delay: 0.8s; }
+
+/* Section reveal animations */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced button styles */
+.button-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-glow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-glow:hover::after {
+  opacity: 1;
+}
