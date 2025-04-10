@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
@@ -39,13 +38,10 @@ const HeroSection = () => {
       {initialAnimation && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-[#323232]">
           <div className="relative w-36 h-36 sm:w-48 sm:h-48 bg-[#323232] border-4 border-[#4CAF50] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(76,175,80,0.6)] animate-pop-in overflow-hidden">
-            {/* Animated elements inside the logo */}
-            <div className="absolute inset-0 bg-[#4CAF50]/5 animate-pulse"></div>
-            <div className="absolute w-full h-1 bg-[#4CAF50]/20 top-1/2 animate-[spin_8s_linear_infinite]"></div>
-            <div className="absolute w-1 h-full bg-[#4CAF50]/20 left-1/2 animate-[spin_8s_linear_infinite]"></div>
+            {/* Removed animated elements inside the logo */}
             <div className="z-10">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#4CAF50]">BINKS</h1>
-              <p className="text-[8px] sm:text-xs text-center mt-1 text-[#4CAF50]/80">smart waste</p>
+              {/* Removed "smart waste" text */}
             </div>
           </div>
         </div>
@@ -59,13 +55,10 @@ const HeroSection = () => {
             logoAnimationComplete ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
           }`}
         >
-          {/* Animated elements without the glow effect */}
-          <div className="absolute inset-0 bg-[#4CAF50]/5"></div>
-          <div className="absolute w-full h-0.5 bg-[#4CAF50]/20 top-1/2 transform -translate-y-1/2 animate-[spin_12s_linear_infinite]"></div>
-          <div className="absolute w-0.5 h-full bg-[#4CAF50]/20 left-1/2 transform -translate-x-1/2 animate-[spin_12s_linear_infinite]"></div>
+          {/* Removed animated elements without the glow effect */}
           <div className="z-10">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#4CAF50]">BINKS</h1>
-            <p className="text-[6px] sm:text-[8px] text-center mt-0.5 text-[#4CAF50]/80">smart waste</p>
+            {/* Removed "smart waste" text */}
           </div>
         </div>
         
