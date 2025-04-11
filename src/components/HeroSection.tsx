@@ -1,13 +1,23 @@
+
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useWallet } from "@/context/WalletContext";
+import { connectMetaMask, connectPhantom } from "@/utils/wallet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const HeroSection = () => {
   const [initialAnimation, setInitialAnimation] = useState(true);
   const [logoAnimationComplete, setLogoAnimationComplete] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
   const isMobile = useIsMobile();
+  const { connectWallet, isConnected, isConnecting } = useWallet();
 
   useEffect(() => {
     // Longer initial pop-up animation with a more dramatic effect
@@ -84,13 +94,54 @@ const HeroSection = () => {
             >
               How It Works
             </Button>
-            <Button 
-              className="w-full sm:w-auto mt-3 sm:mt-0 text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-all duration-300 rounded-full shadow-md hover:shadow-lg btn-hover-effect" 
-              variant="outline" 
-              size="sm"
-            >
-              Connect Wallet
-            </Button>
+            
+            {isConnected ? (
+              <Button 
+                className="w-full sm:w-auto mt-3 sm:mt-0 text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-all duration-300 rounded-full shadow-md hover:shadow-lg btn-hover-effect" 
+                variant="outline" 
+                size="sm"
+                onClick={() => handleScrollToSection('tokenomics')}
+              >
+                View Tokenomics
+              </Button>
+            ) : (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button 
+                    className="w-full sm:w-auto mt-3 sm:mt-0 text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-all duration-300 rounded-full shadow-md hover:shadow-lg btn-hover-effect" 
+                    variant="outline" 
+                    size="sm"
+                    disabled={isConnecting}
+                  >
+                    {isConnecting ? "Connecting..." : "Connect Wallet"}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="bg-[#242424] border border-[#4CAF50]/20 p-2">
+                  <DropdownMenuItem 
+                    className="cursor-pointer hover:bg-[#3e8e41]/10 text-white rounded px-3 py-2 flex items-center gap-2"
+                    onClick={() => connectWallet(connectMetaMask)}
+                  >
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" 
+                      alt="MetaMask" 
+                      className="w-5 h-5" 
+                    />
+                    Connect MetaMask
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    className="cursor-pointer hover:bg-[#3e8e41]/10 text-white rounded px-3 py-2 flex items-center gap-2 mt-1"
+                    onClick={() => connectWallet(connectPhantom)}
+                  >
+                    <img 
+                      src="https://www.gitbook.com/cdn-cgi/image/width=40,height=40,fit=contain,dpr=2,format=auto/https%3A%2F%2F2005246188-files.gitbook.io%2F~%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MRboRWyJqWEAFjTUYEV%252Favatar-1613380783789.png%3Falt%3Dmedia%26token%3D63d7cd17-598d-4ded-be5e-60fe0af90123" 
+                      alt="Phantom" 
+                      className="w-5 h-5 rounded-full" 
+                    />
+                    Connect Phantom
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
         </div>
       </div>
