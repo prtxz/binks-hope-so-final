@@ -31,7 +31,8 @@ const Dashboard = () => {
             <div 
               className="w-12 h-12 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mr-4"
             >
-              <h1 className="text-lg font-bold text-[#4CAF50]">BINKS</h1>
+              {/* Fixed text size to ensure proper alignment within circle */}
+              <h1 className="text-sm font-bold text-[#4CAF50]">BINKS</h1>
             </div>
             <h1 className="text-2xl font-bold text-white">Dashboard</h1>
           </div>
@@ -133,11 +134,12 @@ const Dashboard = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              {/* Updated to show only recyclable and non-recyclable categories */}
               {[
-                { date: '2025-04-08', type: 'Plastic', weight: '1.2 kg', points: 85 },
-                { date: '2025-04-06', type: 'Paper', weight: '2.3 kg', points: 65 },
-                { date: '2025-04-03', type: 'Glass', weight: '0.8 kg', points: 40 },
-                { date: '2025-04-01', type: 'Metal', weight: '0.5 kg', points: 30 }
+                { date: '2025-04-08', type: 'Recyclable', weight: '1.2 kg', points: 85 },
+                { date: '2025-04-06', type: 'Recyclable', weight: '2.3 kg', points: 65 },
+                { date: '2025-04-03', type: 'Non-Recyclable', weight: '0.8 kg', points: 20 },
+                { date: '2025-04-01', type: 'Recyclable', weight: '0.5 kg', points: 30 }
               ].map((activity, index) => (
                 <div key={index} className="flex justify-between items-center p-3 bg-[#242424] rounded-lg border border-[#323232]">
                   <div>
