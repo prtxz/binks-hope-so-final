@@ -98,7 +98,7 @@ const HeroSection = () => {
                 size="sm"
                 onClick={() => handleScrollToSection('tokenomics')}
               >
-                View Tokenomics
+                View Dashboard
               </Button>
             ) : (
               <DropdownMenu>
