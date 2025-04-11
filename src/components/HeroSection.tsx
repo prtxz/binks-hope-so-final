@@ -48,10 +48,8 @@ const HeroSection = () => {
       {initialAnimation && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-[#323232]">
           <div className="relative w-36 h-36 sm:w-48 sm:h-48 bg-[#323232] border-4 border-[#4CAF50] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(76,175,80,0.6)] animate-pop-in overflow-hidden">
-            {/* Removed animated elements inside the logo */}
             <div className="z-10">
               <h1 className="text-4xl sm:text-5xl font-bold text-[#4CAF50]">BINKS</h1>
-              {/* Removed "smart waste" text */}
             </div>
           </div>
         </div>
@@ -65,10 +63,8 @@ const HeroSection = () => {
             logoAnimationComplete ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
           }`}
         >
-          {/* Removed animated elements without the glow effect */}
           <div className="z-10">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#4CAF50]">BINKS</h1>
-            {/* Removed "smart waste" text */}
           </div>
         </div>
         
