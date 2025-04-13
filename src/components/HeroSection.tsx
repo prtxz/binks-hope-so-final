@@ -1,10 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useWallet } from "@/context/WalletContext";
 import { connectMetaMask, connectPhantom } from "@/utils/wallet";
+import { useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,21 +18,18 @@ const HeroSection = () => {
   const [contentVisible, setContentVisible] = useState(false);
   const isMobile = useIsMobile();
   const { connectWallet, isConnected, isConnecting } = useWallet();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Longer initial pop-up animation with a more dramatic effect
     setTimeout(() => {
       setInitialAnimation(false);
       
-      // After the pop-up animation completes, set the logo as visible
-      // This creates a seamless transition from pop-up to permanent position
       setLogoAnimationComplete(true);
       
-      // Content slides up after logo is positioned
       setTimeout(() => {
         setContentVisible(true);
       }, 600);
-    }, 2000); // Show the pop-up for 2 seconds for more impact
+    }, 2000);
   }, []);
 
   const handleScrollToSection = (id: string) => {
@@ -44,7 +41,6 @@ const HeroSection = () => {
 
   return (
     <div id="hero" className="relative bg-[#323232] py-6 md:py-12">
-      {/* Enhanced Initial Pop-up Animation */}
       {initialAnimation && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-[#323232]">
           <div className="relative w-36 h-36 sm:w-48 sm:h-48 bg-[#323232] border-4 border-[#4CAF50] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(76,175,80,0.6)] animate-pop-in overflow-hidden">
@@ -55,9 +51,7 @@ const HeroSection = () => {
         </div>
       )}
 
-      {/* Hero Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-24 text-center">
-        {/* Permanent logo with no glow after animation completes */}
         <div 
           className={`mx-auto w-28 h-28 sm:w-32 sm:h-32 bg-[#323232] border-4 border-[#4CAF50] rounded-full flex items-center justify-center mb-4 sm:mb-6 relative overflow-hidden transition-all duration-700 ${
             logoAnimationComplete ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
@@ -96,9 +90,9 @@ const HeroSection = () => {
                 className="w-full sm:w-auto mt-3 sm:mt-0 text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-all duration-300 rounded-full shadow-md hover:shadow-lg btn-hover-effect" 
                 variant="outline" 
                 size="sm"
-                onClick={() => handleScrollToSection('tokenomics')}
+                onClick={() => navigate("/dashboard")}
               >
-                View Tokenomics
+                View Dashboard
               </Button>
             ) : (
               <DropdownMenu>
@@ -142,12 +136,10 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Chatbot Button - Fixed at bottom right */}
       <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
         <Button 
           className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#4CAF50] hover:bg-[#3e8e41] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center group transform hover:-translate-y-1 btn-hover-effect"
           onClick={() => {
-            // This will be implemented later when the chatbot page is created
             console.log("Chatbot button clicked");
           }}
         >
