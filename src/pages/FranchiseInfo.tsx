@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -27,7 +26,6 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import Navbar from "@/components/Navbar";
 
-// Define the form schema
 const formSchema = z.object({
   organizationName: z.string().min(2, {
     message: "Organization name must be at least 2 characters.",
@@ -57,7 +55,13 @@ const FranchiseInfo = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   
-  // Initialize the form
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -72,20 +76,16 @@ const FranchiseInfo = () => {
     },
   });
 
-  // Handle form submission
   function onSubmit(data: FormValues) {
     console.log(data);
     
-    // Show success toast
     toast({
       title: "Franchise Request Submitted",
       description: "Thank you for your interest! Our team will contact you shortly.",
     });
     
-    // Reset form
     form.reset();
     
-    // Navigate to home after a short delay
     setTimeout(() => {
       navigate("/");
     }, 3000);
@@ -95,8 +95,10 @@ const FranchiseInfo = () => {
     <div className="min-h-screen bg-gradient-to-b from-[#242424] to-[#1e1e1e]">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative py-12 md:py-20 bg-[#323232]">
+      <section 
+        id="franchise-hero" 
+        className="relative py-12 md:py-20 bg-[#323232] scroll-mt-0"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Partner with <span className="text-[#4CAF50]">BINKS</span> — Bring Smart Waste Management to Your City
@@ -107,7 +109,6 @@ const FranchiseInfo = () => {
         </div>
       </section>
       
-      {/* Benefits Section */}
       <section className="py-12 bg-[#1e1e1e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10">
@@ -202,7 +203,6 @@ const FranchiseInfo = () => {
         </div>
       </section>
       
-      {/* Requirements Section */}
       <section className="py-12 bg-[#242424]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10">
@@ -266,7 +266,6 @@ const FranchiseInfo = () => {
         </div>
       </section>
       
-      {/* Franchise Request Form */}
       <section className="py-12 bg-[#1e1e1e]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#242424] p-8 rounded-xl border border-[#4CAF50]/20 shadow-lg">
