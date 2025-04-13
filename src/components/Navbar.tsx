@@ -2,26 +2,36 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navbarVisible, setNavbarVisible] = useState(false);
   const isMobile = useIsMobile();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     // Delay the navbar appearance to happen after the logo animation
     // This ensures a clean sequential animation flow
     const timer = setTimeout(() => {
       setNavbarVisible(true);
-    }, 2600); // Adjusted timing to match HeroSection animations
+    }, isHomePage ? 2600 : 0); // No delay on non-home pages
     
     return () => clearTimeout(timer);
-  }, []);
+  }, [isHomePage]);
 
   const handleScrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      // If already on homepage, just scroll to section
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If on another page, navigate to homepage with section hash
+      navigate('/', { state: { scrollToId: id } });
     }
     setIsMenuOpen(false);
   };
@@ -33,7 +43,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-14 sm:h-16">
           <div className="flex items-center">
-            <a href="#" onClick={() => handleScrollToSection('hero')} className="flex-shrink-0 flex items-center">
+            <a href="#" onClick={(e) => { e.preventDefault(); handleScrollToSection('hero'); }} className="flex-shrink-0 flex items-center">
               <span className="text-lg sm:text-xl font-bold text-white">BINKS</span>
             </a>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-4 md:space-x-8">

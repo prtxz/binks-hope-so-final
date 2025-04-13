@@ -1,16 +1,23 @@
-import { useState, useEffect } from "react";
-import HeroSection from "@/components/HeroSection";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
 import { useToast } from "@/components/ui/use-toast";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Building, DollarSign, Truck, Mail, Video, BookOpen, Trophy, Users, Star, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
+interface LocationState {
+  scrollToId?: string;
+}
+
 const Index = () => {
+  const location = useLocation();
+  const locationState = location.state as LocationState;
   const { toast } = useToast();
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const navigate = useNavigate();
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -32,6 +39,18 @@ const Index = () => {
       });
     };
   }, []);
+
+  useEffect(() => {
+    if (locationState?.scrollToId) {
+      setTimeout(() => {
+        const element = document.getElementById(locationState.scrollToId!);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        window.history.replaceState({}, document.title);
+      }, 100);
+    }
+  }, [locationState]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#242424] to-[#1e1e1e]">
