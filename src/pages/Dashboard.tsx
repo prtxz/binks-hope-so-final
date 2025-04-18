@@ -106,8 +106,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a]">
-      <header className="bg-[#242424] border-b border-[#4CAF50]/20 px-4 py-3 sticky top-0 z-10">
+    <div>
+      <header className="bg-[#242424] border-b border-[#4CAF50]/20 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-10 h-10 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mr-3">

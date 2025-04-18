@@ -12,6 +12,7 @@ import Initiatives from "./pages/Initiatives";
 import Rewards from "./pages/Rewards";
 import Services from "./pages/Services";
 import { WalletProvider } from "./context/WalletContext";
+import DashboardLayout from "./components/layout/DashboardLayout";
 
 const queryClient = new QueryClient();
 
@@ -23,11 +24,17 @@ const App = () => (
       <WalletProvider>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/franchise-info" element={<FranchiseInfo />} />
-          <Route path="/initiatives" element={<Initiatives />} />
-          <Route path="/rewards" element={<Rewards />} />
-          <Route path="/services" element={<Services />} />
+          
+          {/* Dashboard Layout Routes */}
+          <Route element={<DashboardLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/initiatives" element={<Initiatives />} />
+            <Route path="/rewards" element={<Rewards />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/tokenomics" element={<Dashboard />} /> {/* Placeholder until Tokenomics page is created */}
+          </Route>
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
