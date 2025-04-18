@@ -1,182 +1,273 @@
 
 import React, { useState } from 'react';
-import { Camera, Loader2, Wallet, Award, ChevronRight } from 'lucide-react';
+import { Camera, Scale, Loader2, Award, Info } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useToast } from "@/components/ui/use-toast";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Input } from "@/components/ui/input";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
-// Mock data - replace with real data from Supabase later
-const mockUser = {
-  address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
-  totalDisposals: 32,
-  totalRewards: 1240,
-  name: "User",
+// Simulated API call
+const identifyWaste = async () => {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  return {
+    type: "Plastic",
+    confidence: 92,
+    suggestedWeight: 0.34
+  };
+};
+
+// Calculate reward based on weight and type
+const calculateReward = (weight: number, wasteType: string) => {
+  const baseRate = wasteType === "Plastic" ? 40 : 30; // BINK per kg
+  return parseFloat((weight * baseRate).toFixed(2));
 };
 
 const SmartBin = () => {
-  const [identifying, setIdentifying] = useState(false);
+  const [scanning, setScanning] = useState(false);
   const [wasteInfo, setWasteInfo] = useState<any>(null);
+  const [weight, setWeight] = useState<number>(0);
   const [processing, setProcessing] = useState(false);
   const { toast } = useToast();
 
-  const identifyWaste = async () => {
-    setIdentifying(true);
-    // Simulate API call
-    setTimeout(() => {
-      setWasteInfo({
-        type: "Plastic",
-        weight: 0.34,
-        category: "Recyclable"
+  const handleScan = async () => {
+    setScanning(true);
+    try {
+      const result = await identifyWaste();
+      setWasteInfo(result);
+      setWeight(result.suggestedWeight);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to identify waste",
+        variant: "destructive",
       });
-      setIdentifying(false);
-    }, 2000);
+    } finally {
+      setScanning(false);
+    }
   };
 
-  const handleDispose = async () => {
+  const handleConfirm = async () => {
     if (!wasteInfo) return;
     
     setProcessing(true);
-    // Simulate blockchain transaction
-    setTimeout(() => {
+    try {
+      // Simulate blockchain transaction and Supabase insert
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      const rewardAmount = calculateReward(weight, wasteInfo.type);
+      
       toast({
         title: "Success!",
-        description: "You earned 25 BINK tokens for your disposal!",
+        description: `You earned ${rewardAmount} BINK tokens!`,
       });
-      setProcessing(false);
+      
+      // Reset state
       setWasteInfo(null);
-    }, 2000);
+      setWeight(0);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to process transaction",
+        variant: "destructive",
+      });
+    } finally {
+      setProcessing(false);
+    }
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        {/* Left Column - Main Interaction Area (3 columns wide) */}
-        <div className="lg:col-span-3 space-y-6">
-          <Card className="bg-[#242424] border-[#4CAF50]/20">
-            <CardHeader>
-              <CardTitle className="text-white">Smart Bin Camera</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video bg-[#1a1a1a] rounded-lg flex items-center justify-center border border-[#4CAF50]/20">
-                <div className="text-center">
-                  <Camera className="h-16 w-16 text-[#4CAF50] mx-auto mb-4" />
-                  <p className="text-gray-400">Simulated Live Feed</p>
-                </div>
-              </div>
-              
-              <div className="mt-6 space-y-6">
-                <Button 
-                  className="w-full bg-[#4CAF50] hover:bg-[#45a049] text-white"
-                  onClick={identifyWaste}
-                  disabled={identifying}
-                >
-                  {identifying ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Identifying Waste...
-                    </>
-                  ) : (
-                    'Identify Waste'
-                  )}
-                </Button>
+    <div className="container p-6 space-y-6">
+      {/* Breadcrumb */}
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Smart Bin</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
-                {wasteInfo && (
-                  <Card className="bg-[#1a1a1a] border-[#4CAF50]/20">
-                    <CardHeader>
-                      <CardTitle className="text-white text-lg">Identified Waste Information</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-400">Waste Type:</span>
-                        <Badge variant="outline" className="bg-[#4CAF50]/10 text-[#4CAF50] border-[#4CAF50]/20">
-                          {wasteInfo.type}
-                        </Badge>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-400">Estimated Weight:</span>
-                        <span className="text-white font-mono">{wasteInfo.weight} kg</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-400">Category:</span>
-                        <Badge variant="outline" className="bg-[#4CAF50]/10 text-[#4CAF50] border-[#4CAF50]/20">
-                          {wasteInfo.category}
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+      {/* Page Title */}
+      <div>
+        <h1 className="text-3xl font-bold text-white">Smart Bin Scanner</h1>
+        <p className="mt-2 text-gray-400">Scan and dispose waste to earn BINK tokens</p>
+      </div>
 
-        {/* Right Column - User & Disposal Details (2 columns wide) */}
-        <div className="lg:col-span-2 space-y-6">
-          <Card className="bg-[#242424] border-[#4CAF50]/20">
-            <CardHeader>
-              <CardTitle className="text-white">User Profile</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <Avatar className="h-16 w-16 border-2 border-[#4CAF50]">
-                  <AvatarFallback className="bg-[#4CAF50]/20 text-[#4CAF50] text-xl">
-                    {mockUser.name.charAt(0)}
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="text-sm text-gray-400">Wallet Address</p>
-                  <p className="text-white font-mono text-sm">
-                    {mockUser.address.slice(0, 6)}...{mockUser.address.slice(-4)}
-                  </p>
-                </div>
+      {/* Main Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Camera Scanner Section */}
+        <Card className="bg-[#242424] border-[#32CD32]/20">
+          <CardHeader>
+            <CardTitle className="text-white">Camera Scanner</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Camera Feed Placeholder */}
+            <motion.div 
+              className="aspect-video bg-[#1a1a1a] rounded-2xl flex items-center justify-center border border-[#32CD32]/20 overflow-hidden"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="text-center space-y-4">
+                <Camera className="h-16 w-16 text-[#32CD32] mx-auto" />
+                <p className="text-gray-400">Camera feed will appear here</p>
               </div>
+            </motion.div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#4CAF50]/20">
-                  <p className="text-gray-400 text-sm">Total Disposals</p>
-                  <p className="text-2xl font-bold text-white">{mockUser.totalDisposals}</p>
-                </div>
-                <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#4CAF50]/20">
-                  <p className="text-gray-400 text-sm">BINK Tokens</p>
-                  <p className="text-2xl font-bold text-[#4CAF50]">{mockUser.totalRewards}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-[#242424] border-[#4CAF50]/20">
-            <CardHeader>
-              <CardTitle className="text-white">Disposal Action</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Button
-                className="w-full bg-[#4CAF50] hover:bg-[#45a049] text-white"
-                onClick={handleDispose}
-                disabled={!wasteInfo || processing}
+            {/* Scan Button */}
+            <motion.div whileTap={{ scale: 0.98 }}>
+              <Button 
+                className="w-full bg-[#32CD32] hover:bg-[#32CD32]/90 text-white font-medium"
+                onClick={handleScan}
+                disabled={scanning}
               >
-                {processing ? (
+                {scanning ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Processing...
+                    Scanning...
                   </>
                 ) : (
                   <>
-                    Dispose & Reward Me
-                    <Award className="ml-2 h-4 w-4" />
+                    <Camera className="mr-2 h-4 w-4" />
+                    Scan Waste
                   </>
                 )}
               </Button>
-              
-              {!wasteInfo && (
-                <p className="text-sm text-gray-400 text-center mt-4">
-                  Identify waste first to enable disposal
-                </p>
+            </motion.div>
+          </CardContent>
+        </Card>
+
+        {/* Waste Details Section */}
+        <Card className={cn(
+          "bg-[#242424] border-[#32CD32]/20",
+          !wasteInfo && "opacity-50"
+        )}>
+          <CardHeader>
+            <CardTitle className="text-white">Waste Details</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-4">
+              {/* Waste Type and Confidence */}
+              <div className="grid gap-4">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">Waste Type:</span>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="h-4 w-4 text-[#32CD32]" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          Identified type of waste material
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                  <span className="text-white font-medium">
+                    {wasteInfo?.type || 'N/A'}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">Confidence:</span>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="h-4 w-4 text-[#32CD32]" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          ML model confidence in waste identification
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                  <span className="text-white font-medium">
+                    {wasteInfo ? `${wasteInfo.confidence}%` : 'N/A'}
+                  </span>
+                </div>
+              </div>
+
+              {/* Weight Input */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-gray-400 flex items-center gap-2">
+                    Weight (kg)
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="h-4 w-4 text-[#32CD32]" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          Enter the weight of your waste in kilograms
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </label>
+                  <Scale className="h-4 w-4 text-[#32CD32]" />
+                </div>
+                <Input
+                  type="number"
+                  value={weight}
+                  onChange={(e) => setWeight(parseFloat(e.target.value) || 0)}
+                  disabled={!wasteInfo}
+                  className="bg-[#1a1a1a] border-[#32CD32]/20 text-white"
+                />
+              </div>
+
+              {/* Preview Reward */}
+              {wasteInfo && weight > 0 && (
+                <div className="p-4 bg-[#1a1a1a] rounded-xl border border-[#32CD32]/20">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">Estimated Reward:</span>
+                    <span className="text-[#32CD32] font-bold">
+                      {calculateReward(weight, wasteInfo.type)} BINK
+                    </span>
+                  </div>
+                </div>
               )}
-            </CardContent>
-          </Card>
-        </div>
+
+              {/* Confirm Button */}
+              <motion.div whileTap={{ scale: 0.98 }}>
+                <Button
+                  className="w-full bg-[#32CD32] hover:bg-[#32CD32]/90 text-white font-medium"
+                  onClick={handleConfirm}
+                  disabled={!wasteInfo || processing}
+                >
+                  {processing ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <Award className="mr-2 h-4 w-4" />
+                      Confirm & Claim Reward
+                    </>
+                  )}
+                </Button>
+              </motion.div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
