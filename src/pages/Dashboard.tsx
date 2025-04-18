@@ -19,7 +19,7 @@ import {
   ChartTooltip,
   ChartTooltipContent
 } from "@/components/ui/chart";
-import { BarChart as RechartsBarChart, XAxis, YAxis, Bar, ResponsiveContainer, Tooltip, CartesianGrid } from 'recharts';
+import { AreaChart, BarChart as RechartsBarChart, XAxis, YAxis, Bar, ResponsiveContainer, Tooltip, CartesianGrid, Area } from 'recharts';
 
 // Sample chart data
 const weeklyDisposalData = [
@@ -151,7 +151,7 @@ const Dashboard = () => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <Tabs defaultValue="dashboard" value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="md:hidden mb-4">
             <TabsList className="w-full bg-[#2a2a2a] border border-[#4CAF50]/20 grid grid-cols-4">
               <TabsTrigger 
@@ -265,10 +265,16 @@ const Dashboard = () => {
                       }
                     }}
                   >
-                    <RechartsBarChart 
+                    <AreaChart 
                       data={weeklyDisposalData} 
-                      margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                      margin={{ top: 20, right: 30, left: 30, bottom: 20 }}
                     >
+                      <defs>
+                        <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#4CAF50" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#4CAF50" stopOpacity={0.1}/>
+                        </linearGradient>
+                      </defs>
                       <CartesianGrid 
                         stroke="#333333" 
                         strokeDasharray="3 3" 
@@ -280,6 +286,7 @@ const Dashboard = () => {
                         axisLine={{ stroke: '#444444' }}
                         tickLine={{ stroke: '#444444' }}
                         tick={{ fill: '#AAAAAA', fontSize: 12 }}
+                        padding={{ left: 10, right: 10 }}
                       />
                       <YAxis 
                         stroke="#888888"
@@ -287,20 +294,25 @@ const Dashboard = () => {
                         tickLine={{ stroke: '#444444' }}
                         tick={{ fill: '#AAAAAA', fontSize: 12 }}
                         tickFormatter={(value) => `${value} kg`}
+                        domain={[0, 'auto']}
+                        padding={{ top: 10 }}
                       />
                       <Tooltip 
                         content={<CustomTooltip />}
-                        cursor={{ fill: 'rgba(76, 175, 80, 0.1)' }}
+                        cursor={{ stroke: 'rgba(76, 175, 80, 0.3)', strokeWidth: 1 }}
                       />
-                      <Bar 
-                        dataKey="amount" 
-                        name="disposals" 
-                        fill="#4CAF50" 
-                        radius={[4, 4, 0, 0]} 
-                        barSize={40}
-                        animationDuration={1000}
+                      <Area
+                        type="monotone"
+                        dataKey="amount"
+                        name="disposals"
+                        stroke="#4CAF50"
+                        fillOpacity={1}
+                        fill="url(#colorAmount)"
+                        activeDot={{ r: 6, stroke: '#4CAF50', strokeWidth: 2, fill: '#FFFFFF' }}
+                        animationDuration={1500}
+                        isAnimationActive={true}
                       />
-                    </RechartsBarChart>
+                    </AreaChart>
                   </ChartContainer>
                 </div>
               </CardContent>
