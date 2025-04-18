@@ -23,25 +23,31 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <WalletProvider>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/franchise-info" element={<FranchiseInfo />} />
-          
-          {/* Dashboard Layout Routes */}
-          <Route element={<DashboardLayout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/initiatives" element={<Initiatives />} />
-            <Route path="/rewards" element={<Rewards />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/tokenomics" element={<Tokenomics />} />
-            <Route path="/smart-bin" element={<SmartBin />} />
-          </Route>
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </WalletProvider>
+      <Routes>
+        <Route path="/" element={
+          <WalletProvider>
+            <Index />
+          </WalletProvider>
+        } />
+        <Route path="/franchise-info" element={<FranchiseInfo />} />
+        
+        {/* Dashboard Layout Routes - Wrapped with WalletProvider */}
+        <Route element={
+          <WalletProvider>
+            <DashboardLayout />
+          </WalletProvider>
+        }>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/initiatives" element={<Initiatives />} />
+          <Route path="/rewards" element={<Rewards />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/tokenomics" element={<Tokenomics />} />
+          <Route path="/smart-bin" element={<SmartBin />} />
+        </Route>
+        
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </TooltipProvider>
   </QueryClientProvider>
 );
