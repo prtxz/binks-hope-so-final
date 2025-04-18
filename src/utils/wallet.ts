@@ -12,7 +12,8 @@ export interface WalletInfo {
   type: WalletType;
   balance?: string;
   chainId?: string | number;
-  name?: string; // Add optional name property
+  name?: string;
+  role?: string; // Added role property
 }
 
 // Check if MetaMask is available in the browser
