@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWallet } from "@/context/WalletContext";
@@ -37,11 +36,9 @@ const Dashboard = () => {
   const { walletInfo, isConnected, disconnectUserWallet } = useWallet();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("dashboard");
-  // Use optional chaining and provide a default value if name is undefined
   const userName = walletInfo?.name || "User";
   const userInitials = userName.charAt(0).toUpperCase();
 
-  // Redirect to home if not connected
   useEffect(() => {
     if (!isConnected) {
       navigate('/');
@@ -52,12 +49,22 @@ const Dashboard = () => {
     return null; // Will redirect from the useEffect
   }
 
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-[#2a2a2a] border border-[#4CAF50]/20 p-3 rounded-md shadow-lg">
+          <p className="text-white font-medium mb-1">{payload[0].payload.day}</p>
+          <p className="text-[#4CAF50] font-mono">{payload[0].value} kg</p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="min-h-screen bg-[#1a1a1a]">
-      {/* Top Navigation Bar */}
       <header className="bg-[#242424] border-b border-[#4CAF50]/20 px-4 py-3 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <div className="w-10 h-10 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mr-3">
               <h1 className="text-sm font-bold text-[#4CAF50]">BINKS</h1>
@@ -65,9 +72,7 @@ const Dashboard = () => {
             <h2 className="text-xl font-bold text-white hidden sm:block">Smart Bin</h2>
           </div>
 
-          {/* Tabs - Center */}
           <div className="hidden md:flex">
-            {/* Wrap TabsList within Tabs component */}
             <Tabs value={activeTab} onValueChange={setActiveTab}>
               <TabsList className="bg-[#2a2a2a] border border-[#4CAF50]/20">
                 <TabsTrigger 
@@ -102,7 +107,6 @@ const Dashboard = () => {
             </Tabs>
           </div>
 
-          {/* User Profile - Right */}
           <div className="flex items-center space-x-3">
             <div className="flex items-center bg-[#2a2a2a] rounded-full pl-3 pr-1 py-1.5 border border-[#4CAF50]/20">
               <Wallet className="h-4 w-4 text-[#4CAF50] mr-2" />
@@ -146,10 +150,8 @@ const Dashboard = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <Tabs defaultValue="dashboard" value={activeTab} onValueChange={setActiveTab} className="w-full">
-          {/* Mobile Tabs (shown only on mobile) */}
           <div className="md:hidden mb-4">
             <TabsList className="w-full bg-[#2a2a2a] border border-[#4CAF50]/20 grid grid-cols-4">
               <TabsTrigger 
@@ -179,9 +181,7 @@ const Dashboard = () => {
             </TabsList>
           </div>
 
-          {/* Tab Contents */}
           <TabsContent value="dashboard" className="space-y-6">
-            {/* Welcome Banner */}
             <Card className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] border-[#4CAF50]/20">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">Welcome back, {userName}!</CardTitle>
@@ -194,7 +194,6 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            {/* Stats Panel */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <Card className="bg-[#242424] border-[#4CAF50]/20">
                 <CardHeader className="pb-2">
@@ -249,7 +248,6 @@ const Dashboard = () => {
               </Card>
             </div>
 
-            {/* Chart Section */}
             <Card className="bg-[#242424] border-[#4CAF50]/20">
               <CardHeader>
                 <CardTitle className="text-white">Weekly Disposals</CardTitle>
@@ -267,21 +265,47 @@ const Dashboard = () => {
                       }
                     }}
                   >
-                    <ResponsiveContainer width="100%" height="100%">
-                      <RechartsBarChart data={weeklyDisposalData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-                        <CartesianGrid stroke="#333" strokeDasharray="3 3" />
-                        <XAxis dataKey="day" stroke="#888" />
-                        <YAxis stroke="#888" />
-                        <Tooltip content={<CustomTooltip />} />
-                        <Bar dataKey="amount" name="disposals" fill="#4CAF50" radius={[4, 4, 0, 0]} />
-                      </RechartsBarChart>
-                    </ResponsiveContainer>
+                    <RechartsBarChart 
+                      data={weeklyDisposalData} 
+                      margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                    >
+                      <CartesianGrid 
+                        stroke="#333333" 
+                        strokeDasharray="3 3" 
+                        vertical={false}
+                      />
+                      <XAxis 
+                        dataKey="day" 
+                        stroke="#888888"
+                        axisLine={{ stroke: '#444444' }}
+                        tickLine={{ stroke: '#444444' }}
+                        tick={{ fill: '#AAAAAA', fontSize: 12 }}
+                      />
+                      <YAxis 
+                        stroke="#888888"
+                        axisLine={{ stroke: '#444444' }}
+                        tickLine={{ stroke: '#444444' }}
+                        tick={{ fill: '#AAAAAA', fontSize: 12 }}
+                        tickFormatter={(value) => `${value} kg`}
+                      />
+                      <Tooltip 
+                        content={<CustomTooltip />}
+                        cursor={{ fill: 'rgba(76, 175, 80, 0.1)' }}
+                      />
+                      <Bar 
+                        dataKey="amount" 
+                        name="disposals" 
+                        fill="#4CAF50" 
+                        radius={[4, 4, 0, 0]} 
+                        barSize={40}
+                        animationDuration={1000}
+                      />
+                    </RechartsBarChart>
                   </ChartContainer>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Quick Actions Panel */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Button 
                 className="bg-[#4CAF50] hover:bg-[#45a049] text-white h-14 shadow-lg shadow-[#4CAF50]/20"
@@ -301,7 +325,6 @@ const Dashboard = () => {
             </div>
           </TabsContent>
 
-          {/* Initiatives Tab Placeholder */}
           <TabsContent value="initiatives">
             <Card className="bg-[#242424] border-[#4CAF50]/20">
               <CardHeader>
@@ -322,7 +345,6 @@ const Dashboard = () => {
             </Card>
           </TabsContent>
 
-          {/* Activity Tab Placeholder */}
           <TabsContent value="activity">
             <Card className="bg-[#242424] border-[#4CAF50]/20">
               <CardHeader>
@@ -358,7 +380,6 @@ const Dashboard = () => {
             </Card>
           </TabsContent>
 
-          {/* Tokenomics Tab Placeholder */}
           <TabsContent value="tokenomics">
             <Card className="bg-[#242424] border-[#4CAF50]/20">
               <CardHeader>
@@ -377,7 +398,6 @@ const Dashboard = () => {
         </Tabs>
       </div>
 
-      {/* Footer */}
       <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-6 mt-auto">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
           <div className="text-gray-400 mb-4 md:mb-0">
@@ -392,18 +412,6 @@ const Dashboard = () => {
       </footer>
     </div>
   );
-};
-
-// Custom tooltip for the chart
-const CustomTooltip = ({ active, payload }: any) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-[#2a2a2a] border border-[#4CAF50]/20 p-2 rounded shadow-lg">
-        <p className="text-white">{`${payload[0].payload.day}: ${payload[0].value} kg`}</p>
-      </div>
-    );
-  }
-  return null;
 };
 
 export default Dashboard;
