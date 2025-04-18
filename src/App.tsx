@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import FranchiseInfo from "./pages/FranchiseInfo";
 import Initiatives from "./pages/Initiatives";
 import Rewards from "./pages/Rewards";
+import Services from "./pages/Services";
 import { WalletProvider } from "./context/WalletContext";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/franchise-info" element={<FranchiseInfo />} />
           <Route path="/initiatives" element={<Initiatives />} />
           <Route path="/rewards" element={<Rewards />} />
+          <Route path="/services" element={<Services />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
