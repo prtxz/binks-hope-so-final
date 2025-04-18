@@ -11,6 +11,7 @@ import FranchiseInfo from "./pages/FranchiseInfo";
 import Initiatives from "./pages/Initiatives";
 import Rewards from "./pages/Rewards";
 import Services from "./pages/Services";
+import Tokenomics from "./pages/Tokenomics";
 import { WalletProvider } from "./context/WalletContext";
 import DashboardLayout from "./components/layout/DashboardLayout";
 
@@ -32,7 +33,7 @@ const App = () => (
             <Route path="/initiatives" element={<Initiatives />} />
             <Route path="/rewards" element={<Rewards />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/tokenomics" element={<Dashboard />} /> {/* Placeholder until Tokenomics page is created */}
+            <Route path="/tokenomics" element={<Tokenomics />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
