@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Coins, Leaf, BadgeDollarSign, Link as LinkIcon, Info } from 'lucide-react';
@@ -9,6 +8,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useWallet } from "@/context/WalletContext";
+import { connectMetaMask } from "@/utils/wallet";
 
 const Tokenomics = () => {
   const navigate = useNavigate();
@@ -85,6 +85,17 @@ const Tokenomics = () => {
       icon: BadgeDollarSign
     }
   ];
+
+  // Handle wallet connection for the contract section
+  const handleConnectWallet = () => {
+    // If wallet is already connected, navigate to rewards
+    if (walletInfo) {
+      navigate('/rewards');
+    } else {
+      // Otherwise, connect wallet using MetaMask implementation
+      connectWallet(connectMetaMask);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] pb-12">
@@ -287,7 +298,7 @@ const Tokenomics = () => {
           </CardContent>
           <CardFooter>
             <Button 
-              onClick={walletInfo ? () => navigate('/rewards') : connectWallet} 
+              onClick={handleConnectWallet} 
               className="w-full bg-[#4CAF50] hover:bg-[#66BB6A] text-white"
             >
               {walletInfo ? "View Your Rewards" : "Connect Wallet to View Rewards"}
