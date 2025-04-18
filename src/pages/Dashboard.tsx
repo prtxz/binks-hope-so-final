@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWallet } from "@/context/WalletContext";
 import { formatAddress } from "@/utils/wallet";
-import { BarChart, Calendar, ChevronDown, CircleUser, Github, Home, LineChart, LogOut, Plus, Recycle, Settings, Trash2, Trophy, Wallet } from "lucide-react";
+import { BarChart, Calendar, ChevronDown, CircleUser, Github, Home, LineChart, LogOut, Linkedin, Plus, Recycle, Settings, Trash2, Trophy, Twitter, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
