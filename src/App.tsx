@@ -12,6 +12,7 @@ import Initiatives from "./pages/Initiatives";
 import Rewards from "./pages/Rewards";
 import Services from "./pages/Services";
 import Tokenomics from "./pages/Tokenomics";
+import SmartBin from "./pages/SmartBin";
 import { WalletProvider } from "./context/WalletContext";
 import DashboardLayout from "./components/layout/DashboardLayout";
 
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/rewards" element={<Rewards />} />
             <Route path="/services" element={<Services />} />
             <Route path="/tokenomics" element={<Tokenomics />} />
+            <Route path="/smart-bin" element={<SmartBin />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

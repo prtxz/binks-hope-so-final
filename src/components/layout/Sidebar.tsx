@@ -13,7 +13,8 @@ import {
   User,
   ChevronLeft,
   ChevronRight,
-  LogOut
+  LogOut,
+  Trash2
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -31,6 +32,7 @@ const navigationItems = [
   { icon: Trophy, label: 'Rewards', path: '/rewards' },
   { icon: Wrench, label: 'Services', path: '/services' },
   { icon: Coins, label: 'Tokenomics', path: '/tokenomics' },
+  { icon: Trash2, label: 'SmartBin', path: '/smart-bin' },
 ];
 
 const Sidebar = () => {
