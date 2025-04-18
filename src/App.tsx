@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
@@ -21,16 +23,23 @@ const App = () => (
       <Toaster />
       <Sonner />
       <WalletProvider>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/franchise-info" element={<FranchiseInfo />} />
-          <Route path="/initiatives" element={<Initiatives />} />
-          <Route path="/rewards" element={<Rewards />} />
-          <Route path="/services" element={<Services />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full bg-[#1e1e1e] text-white">
+            <AppSidebar />
+            <main className="flex-1 overflow-x-hidden">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/franchise-info" element={<FranchiseInfo />} />
+                <Route path="/initiatives" element={<Initiatives />} />
+                <Route path="/rewards" element={<Rewards />} />
+                <Route path="/services" element={<Services />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
+        </SidebarProvider>
       </WalletProvider>
     </TooltipProvider>
   </QueryClientProvider>
