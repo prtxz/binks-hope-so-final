@@ -33,6 +33,7 @@ const navigationItems = [
   { icon: Wrench, label: 'Services', path: '/services' },
   { icon: Coins, label: 'Tokenomics', path: '/tokenomics' },
   { icon: Trash2, label: 'SmartBin', path: '/smart-bin' },
+  { icon: User, label: 'Profile', path: '/profile' },
 ];
 
 const Sidebar = () => {
