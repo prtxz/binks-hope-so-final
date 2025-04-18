@@ -1,24 +1,21 @@
+
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Coins, Leaf, BadgeDollarSign, Link as LinkIcon, Info } from 'lucide-react';
+import { ArrowRight, Coins, Leaf, BadgeDollarSign, Globe, Recycle, Gift, Circle, Info } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useWallet } from "@/context/WalletContext";
-import { connectMetaMask } from "@/utils/wallet";
+import { useNavigate } from 'react-router-dom';
+import { ChartContainer } from "@/components/ui/chart";
 
 const Tokenomics = () => {
   const navigate = useNavigate();
-  const { walletInfo, connectWallet } = useWallet();
   const [isVisible, setIsVisible] = useState<{[key: string]: boolean}>({
     hero: false,
     formula: false,
+    multipliers: false,
     distribution: false,
-    utility: false,
-    contract: false,
+    impact: false,
     cta: false
   });
 
@@ -48,57 +45,35 @@ const Tokenomics = () => {
     };
   }, []);
 
-  // Material multipliers data for the table
-  const materials = [
-    { name: 'Plastic', multiplier: '0.8x', tooltip: 'Common but harmful to the environment. Moderate rewards to encourage recycling.' },
-    { name: 'Paper', multiplier: '0.6x', tooltip: 'Easily recycled and biodegradable. Lower rewards due to abundance and lower environmental impact.' },
-    { name: 'Glass', multiplier: '1.2x', tooltip: 'Infinitely recyclable with significant energy savings. Higher rewards to promote reuse.' },
-    { name: 'Metal', multiplier: '1.5x', tooltip: 'Valuable and energy-intensive to produce. Higher rewards due to high recycling value.' },
-    { name: 'Organic', multiplier: '0.4x', tooltip: 'Naturally biodegradable. Lower rewards but important for composting initiatives.' },
-    { name: 'E-waste', multiplier: '3.0x', tooltip: 'Contains rare metals and hazardous materials. Highest rewards due to environmental impact and recovery value.' },
+  // Material multipliers data
+  const materialMultipliers = [
+    { name: 'Plastic', multiplier: '0.8x', icon: Recycle, description: 'Common but harmful to environment' },
+    { name: 'Paper', multiplier: '0.6x', icon: Recycle, description: 'Easily recyclable, lower impact' },
+    { name: 'Glass', multiplier: '1.2x', icon: Recycle, description: 'High reuse value' },
+    { name: 'Metal', multiplier: '1.5x', icon: Recycle, description: 'Valuable, high energy savings' },
+    { name: 'Organic', multiplier: '0.4x', icon: Leaf, description: 'Compostable, natural decay' },
+    { name: 'E-waste', multiplier: '3.0x', icon: Coins, description: 'High-value components, highest impact' },
   ];
 
   // Token distribution data for pie chart
   const distributionData = [
-    { name: 'User Rewards', value: 40, color: '#4CAF50' },
-    { name: 'Ecosystem & Partnerships', value: 25, color: '#81C784' },
-    { name: 'Dev & Ops', value: 15, color: '#66BB6A' },
+    { name: 'Rewards Pool', value: 50, color: '#4CAF50' },
+    { name: 'Development', value: 20, color: '#81C784' },
+    { name: 'Partnerships', value: 15, color: '#66BB6A' },
     { name: 'Treasury', value: 10, color: '#A5D6A7' },
-    { name: 'Marketing & Grants', value: 10, color: '#C8E6C9' },
+    { name: 'Community', value: 5, color: '#C8E6C9' },
   ];
 
-  // Token utility data
-  const utilityCards = [
-    {
-      title: 'Redeem for Vouchers',
-      description: 'Convert your BINK tokens into vouchers for eco-friendly products and services from our partners.',
-      icon: Coins
-    },
-    {
-      title: 'Stake for Initiatives',
-      description: 'Stake your tokens to support environmental initiatives and earn additional rewards.',
-      icon: Leaf
-    },
-    {
-      title: 'Earn NFT Badges',
-      description: 'Collect NFT badges that showcase your environmental contributions and grant special privileges.',
-      icon: BadgeDollarSign
-    }
+  // Token impact data
+  const impactItems = [
+    { title: 'Encourages recycling', description: 'Incentivizes sustainable behavior through rewards', icon: Recycle },
+    { title: 'Environmental impact', description: 'Each token represents a reduced carbon footprint', icon: Leaf },
+    { title: 'Future rewards', description: 'Tokens can be exchanged for eco-friendly products', icon: Gift },
+    { title: 'Blockchain verified', description: 'Transparent and secure transaction ledger', icon: Globe },
   ];
-
-  // Handle wallet connection for the contract section
-  const handleConnectWallet = () => {
-    // If wallet is already connected, navigate to rewards
-    if (walletInfo) {
-      navigate('/rewards');
-    } else {
-      // Otherwise, connect wallet using MetaMask implementation
-      connectWallet(connectMetaMask);
-    }
-  };
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] pb-12">
+    <div className="min-h-screen bg-[#0F0F0F] pb-12">
       {/* Hero Section */}
       <section 
         id="hero" 
@@ -108,12 +83,12 @@ const Tokenomics = () => {
       >
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-6 flex justify-center">
-            <div className="relative w-20 h-20 md:w-24 md:h-24 bg-[#242424] rounded-full flex items-center justify-center border border-[#4CAF50]/30 shadow-[0_0_15px_rgba(76,175,80,0.25)]">
-              <Coins className="w-10 h-10 md:w-12 md:h-12 text-[#4CAF50]" />
+            <div className="relative w-20 h-20 md:w-24 md:h-24 bg-[#1a1a1a] rounded-full flex items-center justify-center border border-[#32CD32]/30 shadow-[0_0_15px_rgba(50,205,50,0.25)]">
+              <Coins className="w-10 h-10 md:w-12 md:h-12 text-[#32CD32]" />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Tokenomics</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">The economics behind your green rewards.</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Understanding BINK Tokenomics</h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">Discover how rewards are calculated and why your actions matter.</p>
         </div>
       </section>
 
@@ -124,64 +99,134 @@ const Tokenomics = () => {
           isVisible.formula ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
-        <Card className="max-w-5xl mx-auto bg-[#242424] border-[#4CAF50]/20 shadow-lg overflow-hidden">
+        <Card className="max-w-5xl mx-auto bg-[#1a1a1a] border-[#32CD32]/20 shadow-lg overflow-hidden">
           <CardHeader>
-            <CardTitle className="text-2xl text-white">How Rewards Are Calculated</CardTitle>
-            <CardDescription className="text-gray-400">Understanding the BINK token earning formula</CardDescription>
+            <CardTitle className="text-2xl text-white">Reward Formula</CardTitle>
+            <CardDescription className="text-gray-400">How your eco-actions convert to tokens</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="p-4 bg-[#1a1a1a] rounded-lg border border-[#4CAF50]/10 mb-6">
-              <p className="text-center text-lg font-mono text-[#4CAF50] md:text-xl">
+            <div className="p-6 bg-[#121212] rounded-lg border border-[#32CD32]/10 mb-6">
+              <p className="text-center text-xl font-mono text-[#32CD32] md:text-2xl">
                 Reward = BaseRate × MaterialMultiplier × Weight × EnvironmentalFactor
               </p>
             </div>
             
-            <h3 className="text-white font-medium mb-4">Material Multipliers</h3>
-            
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Material</TableHead>
-                    <TableHead>Multiplier</TableHead>
-                    <TableHead className="text-right">Why?</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {materials.map((material) => (
-                    <TableRow key={material.name}>
-                      <TableCell className="font-medium">{material.name}</TableCell>
-                      <TableCell className="text-[#4CAF50] font-mono">{material.multiplier}</TableCell>
-                      <TableCell className="text-right">
-                        <HoverCard>
-                          <HoverCardTrigger asChild>
-                            <Button variant="ghost" size="icon" className="h-8 w-8">
-                              <Info className="h-4 w-4" />
-                              <span className="sr-only">Why this multiplier?</span>
-                            </Button>
-                          </HoverCardTrigger>
-                          <HoverCardContent className="w-80 bg-[#323232] border-[#4CAF50]/20">
-                            <p className="text-sm text-gray-300">{material.tooltip}</p>
-                          </HoverCardContent>
-                        </HoverCard>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+              <div className="bg-[#121212] p-4 rounded-lg border border-[#32CD32]/10">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-white font-medium">BaseRate</h3>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Button variant="ghost" size="icon" className="h-6 w-6">
+                        <Info className="h-4 w-4" />
+                      </Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-[#1a1a1a] border-[#32CD32]/20">
+                      <p className="text-sm text-gray-300">The baseline token reward per kilogram of waste. Currently set at 10 tokens/kg.</p>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
+                <p className="text-[#32CD32] font-mono">10 tokens/kg</p>
+              </div>
+              
+              <div className="bg-[#121212] p-4 rounded-lg border border-[#32CD32]/10">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-white font-medium">MaterialMultiplier</h3>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Button variant="ghost" size="icon" className="h-6 w-6">
+                        <Info className="h-4 w-4" />
+                      </Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-[#1a1a1a] border-[#32CD32]/20">
+                      <p className="text-sm text-gray-300">Different materials have different environmental impacts and recycling values, affecting reward calculation.</p>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
+                <p className="text-[#32CD32] font-mono">0.4x - 3.0x</p>
+              </div>
+              
+              <div className="bg-[#121212] p-4 rounded-lg border border-[#32CD32]/10">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-white font-medium">Weight</h3>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Button variant="ghost" size="icon" className="h-6 w-6">
+                        <Info className="h-4 w-4" />
+                      </Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-[#1a1a1a] border-[#32CD32]/20">
+                      <p className="text-sm text-gray-300">The measured weight of your recycled materials in kilograms.</p>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
+                <p className="text-[#32CD32] font-mono">Weight in kg</p>
+              </div>
+              
+              <div className="bg-[#121212] p-4 rounded-lg border border-[#32CD32]/10">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-white font-medium">EnvironmentalFactor</h3>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Button variant="ghost" size="icon" className="h-6 w-6">
+                        <Info className="h-4 w-4" />
+                      </Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-[#1a1a1a] border-[#32CD32]/20">
+                      <p className="text-sm text-gray-300">A dynamic multiplier adjusting for current environmental priorities. Currently set at 1.0x but can increase during special initiatives.</p>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
+                <p className="text-[#32CD32] font-mono">1.0x (dynamic)</p>
+              </div>
             </div>
           </CardContent>
         </Card>
       </section>
 
-      {/* Token Distribution Pie Chart */}
+      {/* Material Multiplier Grid */}
+      <section 
+        id="multipliers" 
+        className={`animate-on-scroll px-6 mb-16 transition-all duration-1000 ease-out delay-200 transform ${
+          isVisible.multipliers ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">Material Multipliers</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {materialMultipliers.map((material, index) => (
+              <Card 
+                key={index} 
+                className="bg-[#1a1a1a] border-[#32CD32]/20 shadow-lg transition-all duration-300 hover:shadow-[0_0_15px_rgba(50,205,50,0.2)]"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-[#121212] rounded-full flex items-center justify-center mr-4 border border-[#32CD32]/20">
+                      <material.icon className="w-6 h-6 text-[#32CD32]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg text-white font-medium">{material.name}</h3>
+                      <p className="text-gray-400 text-sm">{material.description}</p>
+                    </div>
+                  </div>
+                  <div className="bg-[#121212] p-3 rounded-md border border-[#32CD32]/10 text-center">
+                    <p className="text-[#32CD32] text-xl font-mono">{material.multiplier}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Token Distribution Chart */}
       <section 
         id="distribution" 
-        className={`animate-on-scroll px-6 mb-16 transition-all duration-1000 ease-out delay-200 transform ${
+        className={`animate-on-scroll px-6 mb-16 transition-all duration-1000 ease-out delay-300 transform ${
           isVisible.distribution ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
-        <Card className="max-w-5xl mx-auto bg-[#242424] border-[#4CAF50]/20 shadow-lg">
+        <Card className="max-w-5xl mx-auto bg-[#1a1a1a] border-[#32CD32]/20 shadow-lg">
           <CardHeader>
             <CardTitle className="text-2xl text-white">Token Distribution</CardTitle>
             <CardDescription className="text-gray-400">How BINK tokens are allocated in the ecosystem</CardDescription>
@@ -213,14 +258,14 @@ const Tokenomics = () => {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
-                    <ChartTooltip 
+                    <Tooltip 
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
                           const data = payload[0].payload;
                           return (
-                            <div className="bg-[#323232] border border-[#4CAF50]/20 p-3 rounded-lg shadow-lg">
+                            <div className="bg-[#121212] border border-[#32CD32]/20 p-3 rounded-lg shadow-lg">
                               <p className="text-white font-medium">{data.name}</p>
-                              <p className="text-[#4CAF50]">{data.value}%</p>
+                              <p className="text-[#32CD32]">{data.value}%</p>
                             </div>
                           );
                         }
@@ -235,31 +280,31 @@ const Tokenomics = () => {
         </Card>
       </section>
 
-      {/* Token Utility Cards */}
+      {/* Why BINK Tokens Matter */}
       <section 
-        id="utility" 
-        className={`animate-on-scroll px-6 mb-16 transition-all duration-1000 ease-out delay-300 transform ${
-          isVisible.utility ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        id="impact" 
+        className={`animate-on-scroll px-6 mb-16 transition-all duration-1000 ease-out delay-400 transform ${
+          isVisible.impact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-white mb-8 text-center">Token Utility</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {utilityCards.map((card, index) => (
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">Why BINK Tokens Matter</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {impactItems.map((item, index) => (
               <Card 
                 key={index} 
-                className="bg-[#242424] border-[#4CAF50]/20 shadow-lg hover:shadow-[0_0_15px_rgba(76,175,80,0.2)] transition-all duration-300"
+                className="bg-[#1a1a1a] border-[#32CD32]/20 shadow-lg hover:shadow-[0_0_15px_rgba(50,205,50,0.2)] transition-all duration-300"
               >
-                <CardHeader>
+                <CardContent className="p-6">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-[#1a1a1a] rounded-md flex items-center justify-center mr-4 border border-[#4CAF50]/20">
-                      <card.icon className="w-6 h-6 text-[#4CAF50]" />
+                    <div className="w-12 h-12 bg-[#121212] rounded-lg flex items-center justify-center mr-4 border border-[#32CD32]/20">
+                      <item.icon className="w-6 h-6 text-[#32CD32]" />
                     </div>
-                    <CardTitle className="text-xl text-white">{card.title}</CardTitle>
+                    <div>
+                      <h3 className="text-lg text-white font-medium">{item.title}</h3>
+                      <p className="text-gray-400 text-sm">{item.description}</p>
+                    </div>
                   </div>
-                </CardHeader>
-                <CardContent className="text-gray-300 text-sm">
-                  <p>{card.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -267,47 +312,7 @@ const Tokenomics = () => {
         </div>
       </section>
 
-      {/* Smart Contract Section */}
-      <section 
-        id="contract" 
-        className={`animate-on-scroll px-6 mb-16 transition-all duration-1000 ease-out delay-400 transform ${
-          isVisible.contract ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
-        <Card className="max-w-3xl mx-auto bg-[#242424] border-[#4CAF50]/20 shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-2xl text-white">Verified Smart Contract</CardTitle>
-            <CardDescription className="text-gray-400">View the BINK token contract on the blockchain</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col md:flex-row items-center justify-between p-4 bg-[#1a1a1a] rounded-lg border border-[#4CAF50]/10">
-              <div className="flex items-center mb-4 md:mb-0">
-                <span className="text-gray-400 mr-2">Contract:</span>
-                <span className="text-[#4CAF50] font-mono">0x7cF...8A21</span>
-              </div>
-              <a 
-                href="https://etherscan.io" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center text-[#4CAF50] hover:text-[#66BB6A] transition-colors"
-              >
-                <span className="mr-2">View on Chain Explorer</span>
-                <LinkIcon className="w-4 h-4" />
-              </a>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button 
-              onClick={handleConnectWallet} 
-              className="w-full bg-[#4CAF50] hover:bg-[#66BB6A] text-white"
-            >
-              {walletInfo ? "View Your Rewards" : "Connect Wallet to View Rewards"}
-            </Button>
-          </CardFooter>
-        </Card>
-      </section>
-
-      {/* CTA Footer */}
+      {/* CTA section */}
       <section 
         id="cta" 
         className={`animate-on-scroll px-6 transition-all duration-1000 ease-out delay-500 transform ${
@@ -315,22 +320,13 @@ const Tokenomics = () => {
         }`}
       >
         <div className="max-w-3xl mx-auto text-center">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              onClick={() => navigate('/initiatives')} 
-              className="bg-[#323232] hover:bg-[#4CAF50] text-white border border-[#4CAF50]/30 transition-colors"
-            >
-              Join an Initiative
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button 
-              onClick={() => navigate('/rewards')} 
-              className="bg-[#323232] hover:bg-[#4CAF50] text-white border border-[#4CAF50]/30 transition-colors"
-            >
-              See Your Rewards
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
+          <Button 
+            onClick={() => navigate('/smart-bin')} 
+            className="bg-[#32CD32] hover:bg-[#32CD32]/80 text-white text-lg px-6 py-6"
+          >
+            Start Disposing
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
       </section>
     </div>
