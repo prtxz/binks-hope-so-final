@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/chart";
 import { AreaChart, BarChart as RechartsBarChart, XAxis, YAxis, Bar, ResponsiveContainer, Tooltip, CartesianGrid, Area } from 'recharts';
 
-// Sample chart data
 const weeklyDisposalData = [
   { day: 'Mon', amount: 1.5 },
   { day: 'Tue', amount: 2.3 },
@@ -410,15 +409,75 @@ const Dashboard = () => {
         </Tabs>
       </div>
 
-      <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-6 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-          <div className="text-gray-400 mb-4 md:mb-0">
-            BINKS Smart Bin © 2025. All rights reserved.
+      <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-8 mt-auto">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <div className="w-8 h-8 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mr-2">
+                  <h1 className="text-xs font-bold text-[#4CAF50]">BINKS</h1>
+                </div>
+                <h2 className="text-lg font-bold text-white">Smart Bin</h2>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Revolutionizing waste management through blockchain technology and smart solutions.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-white">Quick Links</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <button onClick={() => setActiveTab("dashboard")} className="hover:text-[#4CAF50] transition-colors">
+                    Dashboard
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => setActiveTab("initiatives")} className="hover:text-[#4CAF50] transition-colors">
+                    Initiatives
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => setActiveTab("activity")} className="hover:text-[#4CAF50] transition-colors">
+                    Activity
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => setActiveTab("tokenomics")} className="hover:text-[#4CAF50] transition-colors">
+                    Tokenomics
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-white">Connect With Us</h3>
+              <div className="flex space-x-4">
+                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-[#4CAF50] hover:bg-[#4CAF50]/10">
+                  <Github className="h-5 w-5" />
+                </Button>
+                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-[#4CAF50] hover:bg-[#4CAF50]/10">
+                  <Twitter className="h-5 w-5" />
+                </Button>
+                <Button variant="ghost" size="icon" className="text-gray-400 hover:text-[#4CAF50] hover:bg-[#4CAF50]/10">
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Contact: support@binksmart.com
+              </p>
+            </div>
           </div>
-          <div className="flex space-x-4">
-            <Button variant="ghost" size="icon" className="text-gray-400 hover:text-[#4CAF50]">
-              <Github className="h-5 w-5" />
-            </Button>
+
+          <div className="mt-8 pt-8 border-t border-[#4CAF50]/10 flex flex-col md:flex-row items-center justify-between">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              BINKS Smart Bin © 2025. All rights reserved.
+            </p>
+            <div className="flex space-x-4 text-gray-400 text-sm">
+              <button className="hover:text-[#4CAF50] transition-colors">Privacy Policy</button>
+              <span>•</span>
+              <button className="hover:text-[#4CAF50] transition-colors">Terms of Service</button>
+            </div>
           </div>
         </div>
       </footer>
