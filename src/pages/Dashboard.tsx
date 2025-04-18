@@ -67,40 +67,39 @@ const Dashboard = () => {
 
           {/* Tabs - Center */}
           <div className="hidden md:flex">
-            <TabsList className="bg-[#2a2a2a] border border-[#4CAF50]/20">
-              <TabsTrigger 
-                value="dashboard"
-                className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("dashboard")}
-              >
-                <Home className="w-4 h-4 mr-2" />
-                Dashboard
-              </TabsTrigger>
-              <TabsTrigger 
-                value="initiatives"
-                className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("initiatives")}
-              >
-                <Trophy className="w-4 h-4 mr-2" />
-                Initiatives
-              </TabsTrigger>
-              <TabsTrigger 
-                value="activity"
-                className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("activity")}
-              >
-                <Calendar className="w-4 h-4 mr-2" />
-                Activity
-              </TabsTrigger>
-              <TabsTrigger 
-                value="tokenomics"
-                className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("tokenomics")}
-              >
-                <BarChart className="w-4 h-4 mr-2" />
-                Tokenomics
-              </TabsTrigger>
-            </TabsList>
+            {/* Wrap TabsList within Tabs component */}
+            <Tabs value={activeTab} onValueChange={setActiveTab}>
+              <TabsList className="bg-[#2a2a2a] border border-[#4CAF50]/20">
+                <TabsTrigger 
+                  value="dashboard"
+                  className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
+                >
+                  <Home className="w-4 h-4 mr-2" />
+                  Dashboard
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="initiatives"
+                  className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
+                >
+                  <Trophy className="w-4 h-4 mr-2" />
+                  Initiatives
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="activity"
+                  className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Activity
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="tokenomics"
+                  className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
+                >
+                  <BarChart className="w-4 h-4 mr-2" />
+                  Tokenomics
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
           </div>
 
           {/* User Profile - Right */}
@@ -149,42 +148,38 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <Tabs defaultValue="dashboard" value={activeTab} className="w-full">
+        <Tabs defaultValue="dashboard" value={activeTab} onValueChange={setActiveTab} className="w-full">
           {/* Mobile Tabs (shown only on mobile) */}
           <div className="md:hidden mb-4">
             <TabsList className="w-full bg-[#2a2a2a] border border-[#4CAF50]/20 grid grid-cols-4">
               <TabsTrigger 
                 value="dashboard"
                 className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("dashboard")}
               >
                 <Home className="w-4 h-4" />
               </TabsTrigger>
               <TabsTrigger 
                 value="initiatives"
                 className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("initiatives")}
               >
                 <Trophy className="w-4 h-4" />
               </TabsTrigger>
               <TabsTrigger 
                 value="activity"
                 className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("activity")}
               >
                 <Calendar className="w-4 h-4" />
               </TabsTrigger>
               <TabsTrigger 
                 value="tokenomics"
                 className="data-[state=active]:bg-[#4CAF50]/20 data-[state=active]:text-[#4CAF50]"
-                onClick={() => setActiveTab("tokenomics")}
               >
                 <BarChart className="w-4 h-4" />
               </TabsTrigger>
             </TabsList>
           </div>
 
-          {/* Dashboard Tab Content */}
+          {/* Tab Contents */}
           <TabsContent value="dashboard" className="space-y-6">
             {/* Welcome Banner */}
             <Card className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] border-[#4CAF50]/20">
