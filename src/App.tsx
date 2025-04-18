@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import FranchiseInfo from "./pages/FranchiseInfo";
 import Initiatives from "./pages/Initiatives";
+import CreateInitiative from "./pages/CreateInitiative";
 import Rewards from "./pages/Rewards";
 import Services from "./pages/Services";
 import Tokenomics from "./pages/Tokenomics";
@@ -40,6 +41,7 @@ const App = () => (
         }>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/initiatives" element={<Initiatives />} />
+          <Route path="/create-initiative" element={<CreateInitiative />} />
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/services" element={<Services />} />
           <Route path="/tokenomics" element={<Tokenomics />} />
