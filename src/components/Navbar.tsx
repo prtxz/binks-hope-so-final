@@ -12,6 +12,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
+  // Don't render the navbar if not on homepage
+  if (!isHomePage) {
+    return null;
+  }
+
   useEffect(() => {
     // Delay the navbar appearance to happen after the logo animation
     // This ensures a clean sequential animation flow
