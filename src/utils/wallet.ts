@@ -1,4 +1,3 @@
-
 import { toast } from "../hooks/use-toast";
 
 // Define the wallet types we support
@@ -13,6 +12,7 @@ export interface WalletInfo {
   type: WalletType;
   balance?: string;
   chainId?: string | number;
+  name?: string; // Add optional name property
 }
 
 // Check if MetaMask is available in the browser
@@ -70,7 +70,8 @@ export const connectMetaMask = async (): Promise<WalletInfo | null> => {
         address,
         type: WalletType.METAMASK,
         balance: ethBalance,
-        chainId
+        chainId,
+        name: "User" // Set a default name
       };
       
       localStorage.setItem('walletInfo', JSON.stringify(walletInfo));
@@ -110,7 +111,8 @@ export const connectPhantom = async (): Promise<WalletInfo | null> => {
       // Save wallet info to localStorage
       const walletInfo: WalletInfo = {
         address,
-        type: WalletType.PHANTOM
+        type: WalletType.PHANTOM,
+        name: "User" // Set a default name
       };
       
       localStorage.setItem('walletInfo', JSON.stringify(walletInfo));

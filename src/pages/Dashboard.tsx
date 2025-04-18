@@ -37,6 +37,7 @@ const Dashboard = () => {
   const { walletInfo, isConnected, disconnectUserWallet } = useWallet();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("dashboard");
+  // Use optional chaining and provide a default value if name is undefined
   const userName = walletInfo?.name || "User";
   const userInitials = userName.charAt(0).toUpperCase();
 
