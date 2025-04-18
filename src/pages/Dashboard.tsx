@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWallet } from "@/context/WalletContext";
@@ -13,7 +12,7 @@ import {
   Plus, 
   Recycle, 
   Target, 
-  CoinIcon,
+  CoinsIcon,
   Flag,
   Users, 
   Trash2, 
@@ -49,7 +48,6 @@ const weeklyDisposalData = [
   { day: 'Sun', amount: 0.4 },
 ];
 
-// Sample data for recent disposal activity
 const recentDisposals = [
   { id: 1, timestamp: '2025-04-16 15:45', type: 'Plastic', weight: 1.2, tokens: 85 },
   { id: 2, timestamp: '2025-04-14 10:30', type: 'Metal', weight: 2.3, tokens: 120 },
@@ -58,7 +56,6 @@ const recentDisposals = [
   { id: 5, timestamp: '2025-04-05 14:10', type: 'Paper', weight: 1.8, tokens: 90 },
 ];
 
-// Sample data for initiatives
 const initiatives = [
   { id: 1, name: 'Community Cleanup Drive', progress: 60, status: 'Active', description: 'Help clean up local parks and beaches' },
   { id: 2, name: 'Plastic-Free Challenge', progress: 35, status: 'Active', description: 'Reduce plastic usage for 30 days' },
@@ -121,7 +118,7 @@ const Dashboard = () => {
 
           <div className="flex items-center space-x-3">
             <div className="flex items-center bg-[#2a2a2a] rounded-full pl-3 pr-1 py-1.5 border border-[#4CAF50]/20">
-              <CoinIcon className="h-4 w-4 text-[#4CAF50] mr-2" />
+              <CoinsIcon className="h-4 w-4 text-[#4CAF50] mr-2" />
               <span className="text-gray-300 text-sm mr-2 hidden sm:inline">1,240 BINK</span>
               
               <DropdownMenu>
@@ -201,7 +198,7 @@ const Dashboard = () => {
               <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-white text-lg flex items-center">
-                    <CoinIcon className="w-5 h-5 text-[#4CAF50] mr-2" />
+                    <CoinsIcon className="w-5 h-5 text-[#4CAF50] mr-2" />
                     BINK Tokens
                   </CardTitle>
                 </CardHeader>
@@ -295,7 +292,6 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            {/* Recent Disposal Activity Section */}
             <Card className="bg-[#242424] border-[#4CAF50]/20">
               <CardHeader>
                 <CardTitle className="text-white">Recent Disposal Activity</CardTitle>
