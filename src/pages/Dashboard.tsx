@@ -107,13 +107,14 @@ const Dashboard = () => {
 
   return (
     <div>
-      <header className="bg-[#242424] border-b border-[#4CAF50]/20 px-4 py-3">
+      // Header adjustment
+      <header className="bg-[#242424] border-b border-[#4CAF50]/20 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mr-3">
-              <h1 className="text-sm font-bold text-[#4CAF50]">BINKS</h1>
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center">
+              <h1 className="text-base font-bold text-[#4CAF50]">BINKS</h1>
             </div>
-            <h2 className="text-xl font-bold text-white hidden sm:block">Smart Bin</h2>
+            <h2 className="text-2xl font-bold text-white hidden sm:block">Smart Bin</h2>
           </div>
 
           <div className="flex items-center space-x-3">
@@ -230,18 +231,11 @@ const Dashboard = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-[300px] w-full">
-                  <ChartContainer
-                    config={{
-                      disposals: {
-                        label: "Disposals",
-                        color: "#4CAF50"
-                      }
-                    }}
-                  >
+                <div className="h-[400px] w-full"> {/* Increased from 300px to 400px */}
+                  <ResponsiveContainer width="100%" height="100%">
                     <AreaChart 
                       data={weeklyDisposalData} 
-                      margin={{ top: 20, right: 30, left: 30, bottom: 20 }}
+                      margin={{ top: 20, right: 30, left: 10, bottom: 10 }} // Adjusted margins for better spacing
                     >
                       <defs>
                         <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
@@ -287,7 +281,7 @@ const Dashboard = () => {
                         isAnimationActive={true}
                       />
                     </AreaChart>
-                  </ChartContainer>
+                  </ResponsiveContainer>
                 </div>
               </CardContent>
             </Card>
@@ -328,7 +322,10 @@ const Dashboard = () => {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10">
+                <Button 
+                  variant="outline" 
+                  className="w-full bg-white text-[#4CAF50] border-[#4CAF50] hover:bg-[#4CAF50] hover:text-white transition-colors duration-300"
+                >
                   View All Activity
                 </Button>
               </CardFooter>
@@ -385,17 +382,18 @@ const Dashboard = () => {
         </Tabs>
       </div>
 
-      <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mr-2">
-                <h1 className="text-xs font-bold text-[#4CAF50]">BINKS</h1>
+      // Footer adjustment
+      <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-6 mt-auto">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center">
+                <h1 className="text-sm font-bold text-[#4CAF50]">BINKS</h1>
               </div>
-              <h2 className="text-lg font-bold text-white">Smart Bin</h2>
+              <h2 className="text-xl font-bold text-white">Smart Bin</h2>
             </div>
 
-            <p className="text-gray-400 text-sm text-center">
+            <p className="text-gray-400 text-sm">
               BINKS Smart Bin © 2025. All rights reserved.
             </p>
           </div>

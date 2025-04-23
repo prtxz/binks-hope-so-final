@@ -119,12 +119,18 @@ const Index = () => {
           </div>
           
           <div className="aspect-w-16 aspect-h-9 bg-[#1a1a1a] rounded-xl overflow-hidden shadow-lg mx-auto max-w-4xl border border-[#4CAF50]/20">
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center">
-                <Video className="h-16 w-16 text-[#4CAF50] mx-auto mb-4" />
-                <p className="text-gray-400">Video Placeholder</p>
-              </div>
-            </div>
+            <video 
+              className="w-full h-full object-cover"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src="/binksvedio.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -507,6 +513,25 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      {/* Footer Section */}
+      <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-center">
+            <div className="w-16 h-16 bg-[#323232] border-2 border-[#4CAF50] rounded-full flex items-center justify-center mb-4">
+              <h1 className="text-sm font-bold text-[#4CAF50]">BINKS</h1>
+            </div>
+            <div className="text-center">
+              <p className="text-gray-400 text-sm">
+                © {new Date().getFullYear()} BINKS. All rights reserved.
+              </p>
+              <p className="text-gray-500 text-xs mt-2">
+                Smart Waste Management Solutions
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +13,7 @@ import Rewards from "./pages/Rewards";
 import Services from "./pages/Services";
 import Tokenomics from "./pages/Tokenomics";
 import SmartBin from "./pages/SmartBin";
+import Marketplace from "./pages/Marketplace"; // 🚀 New Import
 import Profile from "./pages/Profile";
 import { WalletProvider } from "./context/WalletContext";
 import DashboardLayout from "./components/layout/DashboardLayout";
@@ -32,7 +32,7 @@ const App = () => (
           </WalletProvider>
         } />
         <Route path="/franchise-info" element={<FranchiseInfo />} />
-        
+
         {/* Dashboard Layout Routes - Wrapped with WalletProvider */}
         <Route element={
           <WalletProvider>
@@ -46,10 +46,11 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/tokenomics" element={<Tokenomics />} />
           <Route path="/smart-bin" element={<SmartBin />} />
+          <Route path="/marketplace" element={<Marketplace />} /> {/* ✅ New Route Below SmartBin */}
           <Route path="/profile" element={<Profile />} />
         </Route>
-        
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+        {/* Catch-All Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>

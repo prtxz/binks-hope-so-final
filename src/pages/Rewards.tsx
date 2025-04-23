@@ -114,7 +114,7 @@ const Rewards = () => {
                 <CardTitle className="text-white text-lg">Material Multiplier</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-col gap-1.5 text-sm">
+                <div className="flex flex-col gap-1.5 text-sm text-gray-300">
                   {materialMultipliers.map((material) => (
                     <div key={material.material} className="flex justify-between items-center">
                       <span>{material.material}</span>
@@ -132,7 +132,7 @@ const Rewards = () => {
               <CardContent>
                 <div className="flex items-center">
                   <Weight className="h-6 w-6 text-[#4CAF50] mr-2" />
-                  <div className="text-sm">
+                  <div className="text-sm text-gray-300">
                     <p>Measured in kilograms</p>
                     <p className="text-gray-400">Tracked per disposal</p>
                   </div>
@@ -147,7 +147,7 @@ const Rewards = () => {
               <CardContent>
                 <div className="flex items-center">
                   <Leaf className="h-6 w-6 text-[#4CAF50] mr-2" />
-                  <div className="text-sm">
+                  <div className="text-sm text-gray-300">
                     <p>1.0x to 2.0x boost</p>
                     <p className="text-gray-400">Based on campaigns</p>
                   </div>
@@ -197,7 +197,11 @@ const Rewards = () => {
             </Table>
             
             <div className="mt-4 flex justify-center">
-              <Button variant="outline" size="sm" className="text-[#4CAF50] border-[#4CAF50]/30 hover:bg-[#4CAF50]/10">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="bg-white text-[#4CAF50] border-[#4CAF50] hover:bg-[#4CAF50] hover:text-white transition-colors duration-300 [&>svg]:text-[#4CAF50] hover:[&>svg]:text-white"
+              >
                 <ArrowDown className="h-4 w-4 mr-1" /> Load More
               </Button>
             </div>

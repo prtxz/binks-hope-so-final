@@ -57,11 +57,11 @@ const Tokenomics = () => {
 
   // Token distribution data for pie chart
   const distributionData = [
-    { name: 'Rewards Pool', value: 50, color: '#4CAF50' },
-    { name: 'Development', value: 20, color: '#81C784' },
-    { name: 'Partnerships', value: 15, color: '#66BB6A' },
-    { name: 'Treasury', value: 10, color: '#A5D6A7' },
-    { name: 'Community', value: 5, color: '#C8E6C9' },
+    { name: 'Community', value: 50, color: '#4CAF50' },
+    { name: 'Platform Treasury', value: 20, color: '#81C784' },
+    { name: 'Corporate Partnerships', value: 15, color: '#66BB6A' },
+    { name: 'Teams and Advisors', value: 10, color: '#A5D6A7' },
+    { name: 'Marketing and Partnerships', value: 5, color: '#C8E6C9' },
   ];
 
   // Token impact data
@@ -232,7 +232,7 @@ const Tokenomics = () => {
             <CardDescription className="text-gray-400">How BINK tokens are allocated in the ecosystem</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[400px] w-full">
+            <div className="h-[600px] w-full">
               <ChartContainer
                 config={{
                   ...distributionData.reduce((acc, item) => ({ 
@@ -242,15 +242,15 @@ const Tokenomics = () => {
                 }}
                 className="w-full"
               >
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="80%">
                   <PieChart>
                     <Pie
                       data={distributionData}
                       cx="50%"
                       cy="50%"
-                      outerRadius={120}
-                      innerRadius={60}
-                      paddingAngle={4}
+                      outerRadius={170}
+                      innerRadius={70}
+                      paddingAngle={2}
                       dataKey="value"
                       label={({ name, value }) => `${name}: ${value}%`}
                     >

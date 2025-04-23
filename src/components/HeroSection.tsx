@@ -87,8 +87,7 @@ const HeroSection = () => {
             
             {isConnected ? (
               <Button 
-                className="w-full sm:w-auto mt-3 sm:mt-0 text-sm px-4 py-2 bg-transparent border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-all duration-300 rounded-full shadow-md hover:shadow-lg btn-hover-effect" 
-                variant="outline" 
+                className="w-full sm:w-auto mt-3 sm:mt-0 text-sm px-4 py-2 bg-white text-[#4CAF50] hover:bg-[#4CAF50] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full" 
                 size="sm"
                 onClick={() => navigate("/dashboard")}
               >

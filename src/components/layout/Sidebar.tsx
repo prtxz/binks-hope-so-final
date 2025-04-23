@@ -14,7 +14,8 @@ import {
   ChevronLeft,
   ChevronRight,
   LogOut,
-  Trash2
+  Trash2,
+  ShoppingBag // Import the ShoppingBag icon
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -33,6 +34,7 @@ const navigationItems = [
   { icon: Wrench, label: 'Services', path: '/services' },
   { icon: Coins, label: 'Tokenomics', path: '/tokenomics' },
   { icon: Trash2, label: 'SmartBin', path: '/smart-bin' },
+  { icon: ShoppingBag, label: 'Marketplace', path: '/Marketplace' }, // Add Marketplace item here
   { icon: User, label: 'Profile', path: '/profile' },
 ];
 
@@ -59,7 +61,7 @@ const Sidebar = () => {
         {/* Toggle button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="absolute -right-4 top-7 bg-[#32CD32] text-white p-1 rounded-full shadow-lg hidden lg:block"
+          className="absolute -right-5 top-7 bg-[#32CD32] text-white p-1 rounded-full shadow-lg hidden lg:block"
         >
           {isCollapsed ? (
             <ChevronRight className="h-4 w-4" />
@@ -74,7 +76,7 @@ const Sidebar = () => {
             <h1 className="text-sm font-bold text-[#32CD32]">BINKS</h1>
           </div>
           {!isCollapsed && (
-            <span className="ml-3 text-lg font-semibold text-white">Smart Bin</span>
+            <span className="ml-3 text-lg font-semibold text-white"></span>
           )}
         </Link>
 

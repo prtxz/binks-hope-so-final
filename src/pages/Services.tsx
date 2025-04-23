@@ -91,7 +91,7 @@ const Services = () => {
         <Button 
           onClick={() => navigate('/initiatives')}
           variant="outline"
-          className="border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 px-6 py-2 rounded-lg shadow-lg transition-all duration-300"
+          className="bg-white text-[#4CAF50] border-[#4CAF50] hover:bg-[#4CAF50] hover:text-white px-6 py-2 rounded-lg shadow-lg transition-colors duration-300"
         >
           Join a Green Initiative
         </Button>
