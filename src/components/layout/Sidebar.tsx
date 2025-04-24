@@ -15,7 +15,8 @@ import {
   ChevronRight,
   LogOut,
   Trash2,
-  ShoppingBag // Import the ShoppingBag icon
+  ShoppingBag,
+  ArrowRightLeft // Add this import
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -34,7 +35,8 @@ const navigationItems = [
   { icon: Wrench, label: 'Services', path: '/services' },
   { icon: Coins, label: 'Tokenomics', path: '/tokenomics' },
   { icon: Trash2, label: 'SmartBin', path: '/smart-bin' },
-  { icon: ShoppingBag, label: 'Marketplace', path: '/Marketplace' }, // Add Marketplace item here
+  { icon: ShoppingBag, label: 'Marketplace', path: '/Marketplace' },
+  { icon: ArrowRightLeft, label: 'Liquidation', path: '/liquidation' }, // Add this line
   { icon: User, label: 'Profile', path: '/profile' },
 ];
 

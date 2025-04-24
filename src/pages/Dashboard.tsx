@@ -106,8 +106,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      // Header adjustment
+    <div className="min-h-screen bg-[#1e1e1e]">
+      {/* Header remains the same */}
       <header className="bg-[#242424] border-b border-[#4CAF50]/20 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -157,232 +157,235 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsContent value="dashboard" className="space-y-6">
-            <Card className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] border-[#4CAF50]/20">
-              <CardHeader>
-                <CardTitle className="text-2xl text-white">Welcome back, {userName}!</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Here's your BINKS activity summary.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-white text-lg flex items-center">
-                    <Trash2 className="w-5 h-5 text-[#4CAF50] mr-2" />
-                    Total Disposals
-                  </CardTitle>
+      {/* Add container wrapper */}
+      <div className="max-w-7xl mx-auto p-6">
+        <div className="bg-[#242424] rounded-xl border border-[#4CAF50]/20 p-6">
+          <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsContent value="dashboard" className="space-y-6">
+              <Card className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] border-[#4CAF50]/20">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white">Welcome back, {userName}!</CardTitle>
+                  <CardDescription className="text-gray-300">
+                    Here's your BINKS activity summary.
+                  </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-3xl font-bold text-[#4CAF50]">32</p>
-                  <p className="text-gray-400 text-sm">+5 this week</p>
-                </CardContent>
               </Card>
-              
-              <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-white text-lg flex items-center">
-                    <Target className="w-5 h-5 text-[#4CAF50] mr-2" />
-                    Total Weight
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-3xl font-bold text-[#4CAF50]">24.8 kg</p>
-                  <p className="text-gray-400 text-sm">+3.2 kg this week</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-white text-lg flex items-center">
-                    <CoinsIcon className="w-5 h-5 text-[#4CAF50] mr-2" />
-                    BINK Tokens
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-3xl font-bold text-[#4CAF50]">1,240</p>
-                  <p className="text-gray-400 text-sm">+120 this week</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-white text-lg flex items-center">
-                    <Flag className="w-5 h-5 text-[#4CAF50] mr-2" />
-                    Active Initiatives
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-3xl font-bold text-[#4CAF50]">3</p>
-                  <p className="text-gray-400 text-sm">Joined 1 new this week</p>
-                </CardContent>
-              </Card>
-            </div>
 
-            <Card className="bg-[#242424] border-[#4CAF50]/20">
-              <CardHeader>
-                <CardTitle className="text-white">Weekly Disposals</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Your waste disposal activity for the past week
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-[400px] w-full"> {/* Increased from 300px to 400px */}
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart 
-                      data={weeklyDisposalData} 
-                      margin={{ top: 20, right: 30, left: 10, bottom: 10 }} // Adjusted margins for better spacing
-                    >
-                      <defs>
-                        <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#4CAF50" stopOpacity={0.8}/>
-                          <stop offset="95%" stopColor="#4CAF50" stopOpacity={0.1}/>
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid 
-                        stroke="#333333" 
-                        strokeDasharray="3 3" 
-                        vertical={false}
-                      />
-                      <XAxis 
-                        dataKey="day" 
-                        stroke="#888888"
-                        axisLine={{ stroke: '#444444' }}
-                        tickLine={{ stroke: '#444444' }}
-                        tick={{ fill: '#AAAAAA', fontSize: 12 }}
-                        padding={{ left: 10, right: 10 }}
-                      />
-                      <YAxis 
-                        stroke="#888888"
-                        axisLine={{ stroke: '#444444' }}
-                        tickLine={{ stroke: '#444444' }}
-                        tick={{ fill: '#AAAAAA', fontSize: 12 }}
-                        tickFormatter={(value) => `${value} kg`}
-                        domain={[0, 'auto']}
-                        padding={{ top: 10 }}
-                      />
-                      <Tooltip 
-                        content={<CustomTooltip />}
-                        cursor={{ stroke: 'rgba(76, 175, 80, 0.3)', strokeWidth: 1 }}
-                      />
-                      <Area
-                        type="monotone"
-                        dataKey="amount"
-                        name="disposals"
-                        stroke="#4CAF50"
-                        fillOpacity={1}
-                        fill="url(#colorAmount)"
-                        activeDot={{ r: 6, stroke: '#4CAF50', strokeWidth: 2, fill: '#FFFFFF' }}
-                        animationDuration={1500}
-                        isAnimationActive={true}
-                      />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-[#242424] border-[#4CAF50]/20">
-              <CardHeader>
-                <CardTitle className="text-white">Recent Disposal Activity</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Your latest waste disposal records
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead className="text-left border-b border-[#4CAF50]/20">
-                      <tr>
-                        <th className="pb-2 text-sm font-medium text-gray-400">Timestamp</th>
-                        <th className="pb-2 text-sm font-medium text-gray-400">Type</th>
-                        <th className="pb-2 text-sm font-medium text-gray-400">Weight</th>
-                        <th className="pb-2 text-sm font-medium text-gray-400">Tokens</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-[#323232]">
-                      {recentDisposals.map((item) => (
-                        <tr key={item.id} className="hover:bg-[#2a2a2a]">
-                          <td className="py-3 text-sm text-gray-300">{formatDate(item.timestamp)}</td>
-                          <td className="py-3">
-                            <Badge variant="outline" className="bg-[#2a2a2a] text-[#4CAF50] border-[#4CAF50]/20">
-                              {item.type}
-                            </Badge>
-                          </td>
-                          <td className="py-3 text-sm text-gray-300">{item.weight} kg</td>
-                          <td className="py-3 text-sm font-medium text-[#4CAF50]">+{item.tokens}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button 
-                  variant="outline" 
-                  className="w-full bg-white text-[#4CAF50] border-[#4CAF50] hover:bg-[#4CAF50] hover:text-white transition-colors duration-300"
-                >
-                  View All Activity
-                </Button>
-              </CardFooter>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="initiatives" className="space-y-6">
-            <Card className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] border-[#4CAF50]/20">
-              <CardHeader>
-                <CardTitle className="text-2xl text-white">My Joined Initiatives</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Active and completed community initiatives you've participated in
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {initiatives.map((initiative) => (
-                <Card key={initiative.id} className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
                   <CardHeader className="pb-2">
-                    <div className="flex justify-between items-start">
-                      <CardTitle className="text-white text-lg">{initiative.name}</CardTitle>
-                      <Badge className={getStatusColor(initiative.status)}>
-                        {initiative.status}
-                      </Badge>
-                    </div>
-                    <CardDescription className="text-gray-300">
-                      {initiative.description}
-                    </CardDescription>
+                    <CardTitle className="text-white text-lg flex items-center">
+                      <Trash2 className="w-5 h-5 text-[#4CAF50] mr-2" />
+                      Total Disposals
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">Progress</span>
-                        <span className="text-sm text-[#4CAF50]">{initiative.progress}%</span>
-                      </div>
-                      <Progress value={initiative.progress} />
-                    </div>
+                    <p className="text-3xl font-bold text-[#4CAF50]">32</p>
+                    <p className="text-gray-400 text-sm">+5 this week</p>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-            
-            <div className="text-center">
-              <Button 
-                className="bg-[#4CAF50] hover:bg-[#45a049] text-white"
-                onClick={() => navigate('/initiatives')}
-              >
-                <Plus className="mr-2 h-5 w-5" />
-                Join New Initiative
-              </Button>
-            </div>
-          </TabsContent>
-        </Tabs>
+                
+                <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-white text-lg flex items-center">
+                      <Target className="w-5 h-5 text-[#4CAF50] mr-2" />
+                      Total Weight
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold text-[#4CAF50]">24.8 kg</p>
+                    <p className="text-gray-400 text-sm">+3.2 kg this week</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-white text-lg flex items-center">
+                      <CoinsIcon className="w-5 h-5 text-[#4CAF50] mr-2" />
+                      BINK Tokens
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold text-[#4CAF50]">1,240</p>
+                    <p className="text-gray-400 text-sm">+120 this week</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-white text-lg flex items-center">
+                      <Flag className="w-5 h-5 text-[#4CAF50] mr-2" />
+                      Active Initiatives
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold text-[#4CAF50]">3</p>
+                    <p className="text-gray-400 text-sm">Joined 1 new this week</p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <Card className="bg-[#242424] border-[#4CAF50]/20">
+                <CardHeader>
+                  <CardTitle className="text-white">Weekly Disposals</CardTitle>
+                  <CardDescription className="text-gray-300">
+                    Your waste disposal activity for the past week
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-[400px] w-full"> {/* Increased from 300px to 400px */}
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart 
+                        data={weeklyDisposalData} 
+                        margin={{ top: 20, right: 30, left: 10, bottom: 10 }} // Adjusted margins for better spacing
+                      >
+                        <defs>
+                          <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#4CAF50" stopOpacity={0.8}/>
+                            <stop offset="95%" stopColor="#4CAF50" stopOpacity={0.1}/>
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid 
+                          stroke="#333333" 
+                          strokeDasharray="3 3" 
+                          vertical={false}
+                        />
+                        <XAxis 
+                          dataKey="day" 
+                          stroke="#888888"
+                          axisLine={{ stroke: '#444444' }}
+                          tickLine={{ stroke: '#444444' }}
+                          tick={{ fill: '#AAAAAA', fontSize: 12 }}
+                          padding={{ left: 10, right: 10 }}
+                        />
+                        <YAxis 
+                          stroke="#888888"
+                          axisLine={{ stroke: '#444444' }}
+                          tickLine={{ stroke: '#444444' }}
+                          tick={{ fill: '#AAAAAA', fontSize: 12 }}
+                          tickFormatter={(value) => `${value} kg`}
+                          domain={[0, 'auto']}
+                          padding={{ top: 10 }}
+                        />
+                        <Tooltip 
+                          content={<CustomTooltip />}
+                          cursor={{ stroke: 'rgba(76, 175, 80, 0.3)', strokeWidth: 1 }}
+                        />
+                        <Area
+                          type="monotone"
+                          dataKey="amount"
+                          name="disposals"
+                          stroke="#4CAF50"
+                          fillOpacity={1}
+                          fill="url(#colorAmount)"
+                          activeDot={{ r: 6, stroke: '#4CAF50', strokeWidth: 2, fill: '#FFFFFF' }}
+                          animationDuration={1500}
+                          isAnimationActive={true}
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-[#242424] border-[#4CAF50]/20">
+                <CardHeader>
+                  <CardTitle className="text-white">Recent Disposal Activity</CardTitle>
+                  <CardDescription className="text-gray-300">
+                    Your latest waste disposal records
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="text-left border-b border-[#4CAF50]/20">
+                        <tr>
+                          <th className="pb-2 text-sm font-medium text-gray-400">Timestamp</th>
+                          <th className="pb-2 text-sm font-medium text-gray-400">Type</th>
+                          <th className="pb-2 text-sm font-medium text-gray-400">Weight</th>
+                          <th className="pb-2 text-sm font-medium text-gray-400">Tokens</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[#323232]">
+                        {recentDisposals.map((item) => (
+                          <tr key={item.id} className="hover:bg-[#2a2a2a]">
+                            <td className="py-3 text-sm text-gray-300">{formatDate(item.timestamp)}</td>
+                            <td className="py-3">
+                              <Badge variant="outline" className="bg-[#2a2a2a] text-[#4CAF50] border-[#4CAF50]/20">
+                                {item.type}
+                              </Badge>
+                            </td>
+                            <td className="py-3 text-sm text-gray-300">{item.weight} kg</td>
+                            <td className="py-3 text-sm font-medium text-[#4CAF50]">+{item.tokens}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button 
+                    variant="outline" 
+                    className="w-full bg-white text-[#4CAF50] border-[#4CAF50] hover:bg-[#4CAF50] hover:text-white transition-colors duration-300"
+                  >
+                    View All Activity
+                  </Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="initiatives" className="space-y-6">
+              <Card className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] border-[#4CAF50]/20">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white">My Joined Initiatives</CardTitle>
+                  <CardDescription className="text-gray-300">
+                    Active and completed community initiatives you've participated in
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {initiatives.map((initiative) => (
+                  <Card key={initiative.id} className="bg-[#2f2f2f] border-[#4CAF50]/20 transition-all hover:border-[#4CAF50] hover:shadow-md hover:shadow-[#4CAF50]/20">
+                    <CardHeader className="pb-2">
+                      <div className="flex justify-between items-start">
+                        <CardTitle className="text-white text-lg">{initiative.name}</CardTitle>
+                        <Badge className={getStatusColor(initiative.status)}>
+                          {initiative.status}
+                        </Badge>
+                      </div>
+                      <CardDescription className="text-gray-300">
+                        {initiative.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gray-400">Progress</span>
+                          <span className="text-sm text-[#4CAF50]">{initiative.progress}%</span>
+                        </div>
+                        <Progress value={initiative.progress} />
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              
+              <div className="text-center">
+                <Button 
+                  className="bg-[#4CAF50] hover:bg-[#45a049] text-white"
+                  onClick={() => navigate('/initiatives')}
+                >
+                  <Plus className="mr-2 h-5 w-5" />
+                  Join New Initiative
+                </Button>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
 
-      // Footer adjustment
+      {/* Footer remains the same */}
       <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-6 mt-auto">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">

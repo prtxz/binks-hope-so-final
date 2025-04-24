@@ -8,7 +8,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Building, DollarSign, Truck, Mail, Video, BookOpen, Trophy, Users, Star, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-
+import ChatBot from "@/components/ChatBot";
+import { MessageCircle } from "lucide-react";
 interface LocationState {
   scrollToId?: string;
 }
@@ -19,7 +20,7 @@ const Index = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-
+  const [isChatOpen, setIsChatOpen] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -226,31 +227,85 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Reward Formula Card */}
             <div className="bg-[#1a1a1a] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
               <div className="flex items-center mb-6">
                 <Trophy className="h-10 w-10 text-[#4CAF50] mr-4" />
-                <h3 className="text-2xl font-bold text-white">Eco Score System</h3>
+                <h3 className="text-2xl font-bold text-white">Reward Formula</h3>
               </div>
               <p className="text-gray-300 mb-6">
-                Every time you use BINKS, you earn eco points based on the type of waste. 
-                Your eco score determines your rank in the community and unlocks exclusive rewards.
+                How your eco-actions convert to tokens:
               </p>
-              <div className="space-y-4">
+              <div className="bg-[#242424] p-4 rounded-lg mb-6">
+                <p className="text-[#4CAF50] font-mono text-sm">
+                  Reward = BaseRate × MaterialMultiplier × Weight × EnvironmentalFactor
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-[#242424] p-4 rounded-lg">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Recyclable Waste</span>
-                    <span className="text-[#4CAF50] font-semibold">Higher rewards</span>
-                  </div>
+                  <h4 className="text-white font-semibold mb-2">BaseRate</h4>
+                  <p className="text-[#4CAF50]">10 tokens/kg</p>
                 </div>
                 <div className="bg-[#242424] p-4 rounded-lg">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Non-Recyclable Waste</span>
-                    <span className="text-[#4CAF50] font-semibold">Base rewards</span>
+                  <h4 className="text-white font-semibold mb-2">MaterialMultiplier</h4>
+                  <p className="text-[#4CAF50]">0.4x - 3.0x</p>
+                </div>
+                <div className="bg-[#242424] p-4 rounded-lg">
+                  <h4 className="text-white font-semibold mb-2">Weight</h4>
+                  <p className="text-[#4CAF50]">Weight in kg</p>
+                </div>
+                <div className="bg-[#242424] p-4 rounded-lg">
+                  <h4 className="text-white font-semibold mb-2">EnvironmentalFactor</h4>
+                  <p className="text-[#4CAF50]">1.0x (dynamic)</p>
+                </div>
+              </div>
+              <h4 className="text-white font-semibold mb-4">Material Multipliers</h4>
+              <div className="space-y-3">
+                <div className="bg-[#242424] p-3 rounded-lg flex justify-between items-center">
+                  <div>
+                    <span className="text-white font-medium">E-waste</span>
+                    <p className="text-xs text-gray-400">High-value components, highest impact</p>
                   </div>
+                  <span className="text-[#4CAF50] font-semibold">3.0x</span>
+                </div>
+                <div className="bg-[#242424] p-3 rounded-lg flex justify-between items-center">
+                  <div>
+                    <span className="text-white font-medium">Metal</span>
+                    <p className="text-xs text-gray-400">Valuable, high energy savings</p>
+                  </div>
+                  <span className="text-[#4CAF50] font-semibold">1.5x</span>
+                </div>
+                <div className="bg-[#242424] p-3 rounded-lg flex justify-between items-center">
+                  <div>
+                    <span className="text-white font-medium">Glass</span>
+                    <p className="text-xs text-gray-400">High reuse value</p>
+                  </div>
+                  <span className="text-[#4CAF50] font-semibold">1.2x</span>
+                </div>
+                <div className="bg-[#242424] p-3 rounded-lg flex justify-between items-center">
+                  <div>
+                    <span className="text-white font-medium">Plastic</span>
+                    <p className="text-xs text-gray-400">Common but harmful to environment</p>
+                  </div>
+                  <span className="text-[#4CAF50] font-semibold">0.8x</span>
+                </div>
+                <div className="bg-[#242424] p-3 rounded-lg flex justify-between items-center">
+                  <div>
+                    <span className="text-white font-medium">Paper</span>
+                    <p className="text-xs text-gray-400">Easily recyclable, lower impact</p>
+                  </div>
+                  <span className="text-[#4CAF50] font-semibold">0.6x</span>
+                </div>
+                <div className="bg-[#242424] p-3 rounded-lg flex justify-between items-center">
+                  <div>
+                    <span className="text-white font-medium">Organic</span>
+                    <p className="text-xs text-gray-400">Compostable, natural decay</p>
+                  </div>
+                  <span className="text-[#4CAF50] font-semibold">0.4x</span>
                 </div>
               </div>
             </div>
-            
+                
             <div className="bg-[#1a1a1a] p-8 rounded-xl shadow-md border border-[#4CAF50]/20">
               <div className="flex items-center mb-6">
                 <Users className="h-10 w-10 text-[#4CAF50] mr-4" />
@@ -513,7 +568,15 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+      <ChatBot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+
+{/* Chat Icon Button */}
+<button
+  className="fixed bottom-4 right-4 z-50 p-3 rounded-full bg-[#4CAF50] hover:bg-[#38a169] text-white shadow-xl transition-all duration-300 hover:scale-110 hover:rotate-12 hover:shadow-[0_0_15px_#4CAF50]"
+  onClick={() => setIsChatOpen(!isChatOpen)}
+>
+  <MessageCircle className="h-6 w-6" />
+</button>
       {/* Footer Section */}
       <footer className="bg-[#242424] border-t border-[#4CAF50]/20 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -537,3 +600,6 @@ const Index = () => {
 };
 
 export default Index;
+
+
+

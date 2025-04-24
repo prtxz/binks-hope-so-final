@@ -17,6 +17,7 @@ import Marketplace from "./pages/Marketplace"; // 🚀 New Import
 import Profile from "./pages/Profile";
 import { WalletProvider } from "./context/WalletContext";
 import DashboardLayout from "./components/layout/DashboardLayout";
+import Liquidation from "@/pages/Liquidation";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/smart-bin" element={<SmartBin />} />
           <Route path="/marketplace" element={<Marketplace />} /> {/* ✅ New Route Below SmartBin */}
           <Route path="/profile" element={<Profile />} />
+          <Route path="/liquidation" element={<Liquidation />} />
         </Route>
 
         {/* Catch-All Route */}
