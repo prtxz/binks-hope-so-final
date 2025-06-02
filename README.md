@@ -1,73 +1,32 @@
-# Welcome to your Lovable project
+🧠 Project: BINKS — Blockchain-Integrated Smart Dustbin System
+BINKS is a personal full-stack project that combines Machine Learning, IoT, and Web3 technologies to create a smart, reward-based waste management system. It uses a camera-enabled smart dustbin to identify and segregate waste, calculates its weight, and rewards users with blockchain-based tokens for responsible disposal.
 
-## Project info
+The goal is to gamify sustainability using a decentralized reward system.
 
-**URL**: https://lovable.dev/projects/7ea9938c-d612-4a27-8b36-bcfb46b9aec8
+🔧 Tech Stack
+Frontend: Next.js (via Lovable AI), TypeScript, TailwindCSS
 
-## How can I edit this code?
+Backend: Supabase (Auth, Database, Edge Functions)
 
-There are several ways of editing your application.
+ML: TensorFlow (Keras) + FastAPI / TensorFlow.js
 
-**Use Lovable**
+Web3: Smart Contracts (EVM-compatible), WalletConnect
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7ea9938c-d612-4a27-8b36-bcfb46b9aec8) and start prompting.
+Infra: MCP Server (self-hosted backend with FastAPI/Node.js)
 
-Changes made via Lovable will be committed automatically to this repo.
+🚀 Core Features
+ML-powered waste type classification (plastic, metal, organic, etc.)
 
-**Use your preferred IDE**
+Weight-based reward calculation using a custom formula
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Blockchain token rewards based on disposal activity
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Smartbin QR code linking for user-wallet-session tracking
 
-Follow these steps:
+Real-time dashboard: disposal logs, reward balance, initiatives
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Initiative launch system for campaigns (via smart contracts)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7ea9938c-d612-4a27-8b36-bcfb46b9aec8) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+🧮 Reward Formula
+Reward = BaseRate × MaterialMultiplier × Weight × EnvironmentalFactor
+This dynamic formula allows adjusting token rewards based on waste type and environmental factors (ex: Plastic free July, Paper week)
